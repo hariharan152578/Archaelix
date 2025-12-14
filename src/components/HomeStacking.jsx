@@ -44,7 +44,7 @@ const HomeStacking = () => {
     const sections = [
         {
             id: 1,
-            heading: 'Strategy & Planning',
+            heading: 'Digital Marketing',
             description: 'We craft data-driven digital strategies that align with your business goals and drive measurable results.',
             img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
             bgColor: 'linear-gradient(135deg, #f73b20 0%, #d63118 100%)',
@@ -53,7 +53,7 @@ const HomeStacking = () => {
         },
         {
             id: 2,
-            heading: 'Creative Design',
+            heading: 'IT Services',
             description: 'Our creative team transforms ideas into stunning visuals that captivate your audience and elevate your brand.',
             img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2564&auto=format&fit=crop',
             bgColor: 'linear-gradient(135deg, #d63118 0%, #b52914 100%)',
@@ -62,7 +62,7 @@ const HomeStacking = () => {
         },
         {
             id: 3,
-            heading: 'Growth & Analytics',
+            heading: 'Novix Studios',
             description: 'We scale your digital presence with performance marketing and in-depth analytics to maximize your ROI.',
             img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop',
             bgColor: 'linear-gradient(135deg, #ff6347 0%, #f73b20 50%, #d63118 100%)',
@@ -86,8 +86,8 @@ const HomeStacking = () => {
                             <div className={`${section.textClass} flex flex-col items-center text-center max-w-4xl mx-auto`}>
                                 {/* Big Heading */}
                                 <h2
-                                    className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 text-white leading-tight"
-                                    style={{ fontFamily: "'FoundersGrotesk', sans-serif" }}
+                                    className="text-[10vw] md:text-[8vw] lg:text-[7vw] mb-6 text-white leading-[0.85] tracking-tight uppercase"
+                                    style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600 }}
                                 >
                                     {section.heading}
                                 </h2>
@@ -101,7 +101,7 @@ const HomeStacking = () => {
                                 </p>
 
                                 {/* Image below text */}
-                                <div className="w-full max-w-3xl">
+                                <div className="w-full max-w-5xl">
                                     <div className="relative group">
                                         {/* Glowing border effect */}
                                         <div
