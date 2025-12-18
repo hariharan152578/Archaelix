@@ -6,6 +6,9 @@ import StaggeredMenu from "../components/StaggeredMenu";
 import HomeStacking from "../components/HomeStacking";
 import SplashScreen from "../components/SplashScreen";
 import CTA from "../components/CTA";
+import Footer from "../components/Footer";
+import SmoothScroll from "../components/SmoothScroll";
+import CEONote from "../components/CEONote";
 
 export default function Home() {
   const [splashComplete, setSplashComplete] = useState(false);
@@ -19,6 +22,9 @@ export default function Home() {
 
   return (
     <>
+      {/* Smooth Scrolling */}
+      <SmoothScroll />
+
       {/* Splash Screen */}
       <SplashScreen onComplete={() => setSplashComplete(true)} />
 
@@ -31,7 +37,7 @@ export default function Home() {
             { label: "LinkedIn", link: "#" },
             { label: "Twitter", link: "#" }
           ]}
-          logoText="ARCHAELIX"
+          logoText="archaelix"
           menuButtonColor="#0F172A"
           openMenuButtonColor="#0F172A"
           accentColor="#f73b20"
@@ -45,6 +51,12 @@ export default function Home() {
 
         {/* Stacking Section */}
         <HomeStacking />
+
+        {/* CEO Note Section */}
+        <CEONote />
+
+        {/* Footer Section */}
+        <Footer />
       </div>
     </>
   );

@@ -117,65 +117,13 @@ const SplashScreen = ({ onComplete }) => {
                 ref={logoRef}
                 className="relative z-10 flex flex-col items-center justify-center"
             >
-                {/* Animated Logo Mark */}
-                <div className="relative mb-6">
-                    <div
-                        className="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center"
-                        style={{
-                            background: "rgba(255, 255, 255, 0.15)",
-                            backdropFilter: "blur(10px)",
-                            border: "1px solid rgba(255, 255, 255, 0.25)",
-                        }}
-                    >
-                        <svg
-                            className="w-10 h-10 md:w-12 md:h-12"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="white"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                            <polyline points="2 17 12 22 22 17" />
-                            <polyline points="2 12 12 17 22 12" />
-                        </svg>
-                    </div>
-                    {/* Glow effect */}
-                    <div
-                        className="absolute inset-0 rounded-2xl blur-xl opacity-40"
-                        style={{ background: "rgba(255, 255, 255, 0.4)" }}
-                    />
-                </div>
-
                 {/* Brand Text - Using FoundersGrotesk for heading */}
                 <h1
-                    className="text-4xl md:text-5xl font-bold tracking-tight text-white"
+                    className="text-4xl md:text-7xl font-bold font-heading text-white"
                     style={{ fontFamily: "'FoundersGrotesk', sans-serif" }}
                 >
-                    ARCHAELIX
+                    archaelix
                 </h1>
-                {/* Tagline - Using NeueMontreal for body */}
-                <p
-                    className="mt-3 text-sm md:text-base text-white/80 font-medium tracking-widest uppercase"
-                    style={{ fontFamily: "'NeueMontreal', sans-serif" }}
-                >
-                    Digital Excellence
-                </p>
-
-                {/* Loading indicator */}
-                <div className="mt-10 flex items-center gap-2">
-                    {[0, 1, 2].map((i) => (
-                        <div
-                            key={i}
-                            className="w-2.5 h-2.5 rounded-full bg-white/90 animate-pulse"
-                            style={{
-                                animationDelay: `${i * 0.15}s`,
-                                animationDuration: "0.8s",
-                            }}
-                        />
-                    ))}
-                </div>
             </div>
         </div>
     );

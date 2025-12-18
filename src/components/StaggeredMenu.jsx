@@ -315,7 +315,8 @@ const StaggeredMenu = ({
     if (!closeOnClickAway || !open) return;
 
     const handleClickOutside = event => {
-      if (panelRef.current && !panelRef.current.contains(event.target)) {
+      const isToggleClick = toggleBtnRef.current && toggleBtnRef.current.contains(event.target);
+      if (panelRef.current && !panelRef.current.contains(event.target) && !isToggleClick) {
         closeMenu();
       }
     };
@@ -350,13 +351,13 @@ const StaggeredMenu = ({
         </div>
 
         <header
-          className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between p-8 bg-transparent pointer-events-none z-20 overflow-visible"
+          className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between py-8 px-12 md:px-20 bg-transparent pointer-events-none z-20 overflow-visible"
           aria-label="Main navigation header">
           <div
             className="sm-logo flex items-center select-none pointer-events-auto"
             aria-label="Logo">
             {logoText ? (
-              <span className="text-2xl font-bold tracking-tighter mix-blend-difference text-white"
+              <span className="text-2xl font-bold font-heading mix-blend-difference text-white"
                 style={{ fontFamily: 'FoundersGrotesk, sans-serif' }}>
                 {logoText}
               </span>
@@ -422,10 +423,11 @@ const StaggeredMenu = ({
                     className="sm-panel-itemWrap relative overflow-hidden leading-none"
                     key={it.label + idx}>
                     <a
-                      className="sm-panel-item relative text-black font-semibold text-[4rem] md:text-[5rem] cursor-pointer leading-[0.9] tracking-[-2px] uppercase transition-[color] duration-150 ease-linear inline-block no-underline pr-[1.4em] group"
+                      className="sm-panel-item font-heading relative text-black font-semibold text-[4rem] md:text-[5rem] cursor-pointer leading-[0.9] uppercase transition-[color] duration-150 ease-linear inline-block no-underline pr-[1.4em] group"
                       href={it.link}
                       aria-label={it.ariaLabel}
-                      data-index={idx + 1}>
+                      data-index={idx + 1}
+                      onClick={closeMenu}>
                       <span
                         className="sm-panel-itemLabel inline-block will-change-transform group-hover:text-[#f73b20] transition-colors"
                         style={{ fontFamily: 'FoundersGrotesk, sans-serif' }}>
@@ -466,7 +468,7 @@ const StaggeredMenu = ({
       <style>{`
 .sm-scope { overflow: visible !important; }
 .sm-scope .staggered-menu-wrapper { position: relative; width: 100%; height: 100%; z-index: 40; }
-.sm-scope .staggered-menu-header { position: absolute; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 2em; background: transparent; pointer-events: none; z-index: 20; }
+.sm-scope .staggered-menu-header { position: absolute; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 2rem 5rem; background: transparent; pointer-events: none; z-index: 20; }
 .sm-scope .staggered-menu-header > * { pointer-events: auto; }
 .sm-scope .sm-logo { display: flex; align-items: center; user-select: none; }
 .sm-scope .sm-logo-img { display: block; height: 32px; width: auto; object-fit: contain; }
