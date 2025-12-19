@@ -351,13 +351,13 @@ const StaggeredMenu = ({
         </div>
 
         <header
-          className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between py-8 px-12 md:px-20 bg-transparent pointer-events-none z-20 overflow-visible"
+          className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-12 lg:px-20 bg-transparent pointer-events-none z-20 overflow-visible"
           aria-label="Main navigation header">
           <div
             className="sm-logo flex items-center select-none pointer-events-auto"
             aria-label="Logo">
             {logoText ? (
-              <span className="text-2xl font-bold font-heading mix-blend-difference text-white"
+              <span className="text-2xl font-bold font-heading text-[#0F172A]"
                 style={{ fontFamily: 'FoundersGrotesk, sans-serif' }}>
                 {logoText}
               </span>

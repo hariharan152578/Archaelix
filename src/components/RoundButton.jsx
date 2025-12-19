@@ -5,8 +5,9 @@ import { ArrowUpRight } from "lucide-react";
 
 /**
  * Standardized Button Variants
- * primary: Orange base -> Black hover (For Hero/CTA)
- * dark: Black base -> Orange hover (For CEO/Ready)
+ * primary: Orange base -> Black hover (For Hero/CTA on white bg)
+ * dark: Black base -> Orange hover (For Ready section)
+ * darkWhite: Black base -> White hover (For CEO Note on orange bg)
  * white: White base -> Orange hover
  * orange: Orange base -> White hover
  */
@@ -20,6 +21,12 @@ const variants = {
     dark: {
         className: "bg-[#0F172A] text-white",
         bgcolor: "#f73b20", // Hover background turns orange
+        iconColor: "text-[#0F172A]",
+        hoverIconColor: "group-hover:text-[#f73b20]"
+    },
+    darkWhite: {
+        className: "bg-[#0F172A] text-white",
+        bgcolor: "#f73b20", // Hover background turns primary
         iconColor: "text-[#0F172A]",
         hoverIconColor: "group-hover:text-[#f73b20]"
     },

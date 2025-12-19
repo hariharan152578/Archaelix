@@ -159,7 +159,7 @@ const CEONote = () => {
                             <RoundButton
                                 title="Read Full Story"
                                 href="/about"
-                                variant="dark"
+                                variant="darkWhite"
                             />
                         </div>
 
