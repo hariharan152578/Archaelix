@@ -65,16 +65,16 @@ export default function RoundButton({
     const content = (
         <Rounded
             backgroundColor={finalBgColor}
-            className={`group flex items-center justify-between gap-[40px] pl-[35px] pr-[8px] py-[8px] rounded-full uppercase font-medium transition-all duration-300 ${finalClassName}`}
+            className={`group flex items-center justify-between gap-[25px] sm:gap-[40px] pl-[20px] sm:pl-[35px] pr-[6px] sm:pr-[8px] py-[6px] sm:py-[8px] rounded-full uppercase font-medium transition-all duration-300 ${finalClassName}`}
             style={{ ...style, fontFamily: "'NeueMontreal', sans-serif" }}
         >
-            <span className="relative z-10 text-[15px] tracking-wide font-semibold transition-colors duration-300">
+            <span className="relative z-10 text-[13px] sm:text-[15px] tracking-wide font-semibold transition-colors duration-300">
                 {title}
             </span>
-            <div className="w-[45px] h-[45px] bg-white rounded-full flex items-center justify-center relative z-10 transition-transform duration-300 group-hover:scale-110">
+            <div className="w-[38px] h-[38px] sm:w-[45px] sm:h-[45px] bg-white rounded-full flex items-center justify-center relative z-10 transition-transform duration-300 group-hover:scale-110">
                 <ArrowUpRight
-                    size={24}
-                    className={`${iconBaseColor} ${iconHoverColor} transition-transform duration-500 group-hover:rotate-45`}
+                    size={20}
+                    className={`sm:w-6 sm:h-6 ${iconBaseColor} ${iconHoverColor} transition-transform duration-500 group-hover:rotate-45`}
                     strokeWidth={2.5}
                 />
             </div>

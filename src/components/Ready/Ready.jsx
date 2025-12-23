@@ -21,12 +21,12 @@ export default function Ready() {
 
     return (
         <section
-            className="w-full relative z-30 min-h-screen bg-white py-20 rounded-t-[20px] mt-[-20px]"
+            className="w-full relative z-30 min-h-screen bg-white py-32 rounded-t-[20px] mt-[-20px] flex items-center justify-center"
             ref={container}>
-            <div className="w-full h-full flex justify-center gap-[50px] items-center flex-col">
+            <div className="w-full h-full flex justify-center gap-[40px] md:gap-[50px] items-center flex-col">
                 <div className="flex flex-col gap-[10px]">
                     <h1
-                        className="text-[17vw] leading-[0.85] tracking-tight text-center font-semibold uppercase pointer-events-none text-[#df1612]"
+                        className="text-[28vw] sm:text-[24vw] md:text-[19vw] lg:text-[15vw] leading-[0.7] sm:leading-[0.75] tracking-tight text-center font-semibold uppercase pointer-events-none text-[#df1612]"
                         style={{ fontFamily: "'FoundersGrotesk', sans-serif" }}
                     >
                         <TextMask>{phrase}</TextMask>
@@ -64,9 +64,9 @@ export default function Ready() {
 
             {/* The Eyes */}
             <motion.div
-                className="w-full absolute top-[50%] transform translate-y-[-50%] gap-[30px] flex items-center justify-center pointer-events-none"
+                className="w-full absolute top-[55%] md:top-[50%] transform translate-y-[-50%] gap-[30px] flex items-center justify-center pointer-events-none"
                 style={{ y: mq }}>
-                <Eyes className="w-[200px] h-[200px] md:w-[170px] md:h-[170px] sm:w-[150px] sm:h-[150px]" />
+                <Eyes className="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] md:w-[170px] md:h-[170px] lg:w-[200px] lg:h-[200px]" />
             </motion.div>
         </section>
     );

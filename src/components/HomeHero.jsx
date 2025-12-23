@@ -135,6 +135,7 @@ const HomeHero = () => {
               title="Start The Project"
               href="/contact"
               variant="primary"
+              className="scale-90 sm:scale-100"
             />
           </div>
         </div>

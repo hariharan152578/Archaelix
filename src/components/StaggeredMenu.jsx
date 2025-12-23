@@ -417,7 +417,7 @@ const StaggeredMenu = ({
               />
             </span>
 
-            {/* DESKTOP PLUS ICON - Hidden on mobile */}
+            {/* DESKTOP PLUS ICON - Hidden on mobile, only show on md+ */}
             <span
               ref={iconRef}
               className="sm-icon relative hidden md:inline-flex w-[14px] h-[14px] shrink-0 items-center justify-center"
@@ -500,7 +500,8 @@ const StaggeredMenu = ({
 .sm-scope .sm-logo { display: flex; align-items: center; user-select: none; }
 .sm-scope .sm-logo-img { display: block; height: 32px; width: auto; object-fit: contain; }
 .sm-scope .sm-toggle { position: relative; display: inline-flex; align-items: center; gap: 0.3rem; background: transparent; border: none; cursor: pointer; color: #0F172A; font-weight: 500; line-height: 1; overflow: visible; }
-.sm-scope .sm-icon { position: relative; width: 14px; height: 14px; flex: 0 0 14px; display: inline-flex; align-items: center; justify-content: center; will-change: transform; }
+.sm-scope .sm-icon { position: relative; width: 14px; height: 14px; flex: 0 0 14px; display: none; align-items: center; justify-content: center; will-change: transform; }
+@media (min-width: 768px) { .sm-scope .sm-icon { display: inline-flex; } }
 .sm-scope .sm-panel-itemWrap { position: relative; overflow: hidden; line-height: 1; }
 .sm-scope .sm-icon-line { position: absolute; left: 50%; top: 50%; width: 100%; height: 2px; background: currentColor; border-radius: 2px; transform: translate(-50%, -50%); will-change: transform; }
 .sm-scope .sm-line { display: none !important; }
