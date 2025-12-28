@@ -30,10 +30,8 @@ const SplashScreen = ({ onComplete }) => {
         // Create the animation timeline
         const tl = gsap.timeline({
             onComplete: () => {
-                setTimeout(() => {
-                    setIsVisible(false);
-                    if (onComplete) onComplete();
-                }, 100);
+                setIsVisible(false);
+                if (onComplete) onComplete();
             },
         });
 

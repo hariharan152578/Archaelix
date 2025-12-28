@@ -4,53 +4,86 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import RoundButton from "./RoundButton";
 
-const HomeHero = () => {
+const HomeHero = ({ startAnimation }) => {
   const heroRef = useRef(null);
   const line1Ref = useRef(null);
   const line2Ref = useRef(null);
   const line3Ref = useRef(null);
   const bottomRef = useRef(null);
 
+  // Set initial state immediately
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Initial state
-      gsap.set([line1Ref.current, line2Ref.current, line3Ref.current, bottomRef.current], {
-        opacity: 0,
-        y: 100,
+      // Hide all lines vertically first
+      gsap.set([
+        line1Ref.current.querySelector('h1'),
+        line2Ref.current.querySelector('h1'),
+        line3Ref.current.querySelector('h1')
+      ], {
+        y: "115%",
+        opacity: 0
       });
 
-      // Entrance animation timeline
-      const tl = gsap.timeline({ delay: 0.2 });
+      // Special state for line 2 badge - zero width
+      gsap.set(line2Ref.current.querySelector('.badge-element'), {
+        width: 0,
+        opacity: 0,
+        marginRight: 0
+      });
 
-      tl.to(line1Ref.current, {
-        opacity: 1,
+      gsap.set(bottomRef.current, {
+        y: 20,
+        opacity: 0
+      });
+    }, heroRef);
+    return () => ctx.revert();
+  }, []);
+
+  // Trigger animation when startAnimation becomes true
+  useEffect(() => {
+    if (!startAnimation) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline();
+
+      // 1. Reveal all text lines vertically
+      tl.to([
+        line1Ref.current.querySelector('h1'),
+        line2Ref.current.querySelector('h1'),
+        line3Ref.current.querySelector('h1')
+      ], {
         y: 0,
+        opacity: 1,
         duration: 1,
-        ease: "power3.out",
+        stagger: 0.1,
+        ease: "power4.out",
       })
-        .to(line2Ref.current, {
+        // 2. Expand the badge which pushes the text to the right
+        .to(line2Ref.current.querySelector('.badge-element'), {
+          width: "clamp(60px, 12vw, 180px)", // Dynamic width based on screen size
           opacity: 1,
-          y: 0,
+          marginRight: "1rem",
           duration: 1,
-          ease: "power3.out",
-        }, "-=0.7")
-        .to(line3Ref.current, {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-        }, "-=0.7")
+          ease: "power4.inOut",
+        }, "-=0.5")
+        // 3. Show the bottom bar
         .to(bottomRef.current, {
           opacity: 1,
           y: 0,
           duration: 0.8,
           ease: "power3.out",
-        }, "-=0.5");
-
+        }, "-=0.5")
+        .from(bottomRef.current.querySelectorAll('p, .order-3'), {
+          opacity: 0,
+          y: 10,
+          stagger: 0.1,
+          duration: 0.6,
+          ease: "power2.out"
+        }, "-=0.4");
     }, heroRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [startAnimation]);
 
   return (
     <section
@@ -62,9 +95,9 @@ const HomeHero = () => {
         {/* Hero Typography */}
         <div className="w-full">
           {/* Line 1 */}
-          <div ref={line1Ref} className="overflow-hidden">
+          <div ref={line1Ref} className="overflow-hidden py-1">
             <h1
-              className="text-[16.5vw] sm:text-[14vw] md:text-[11vw] lg:text-[10vw] leading-[0.75] tracking-tight text-[#0F172A] uppercase font-semibold"
+              className="text-[16.5vw] sm:text-[14vw] md:text-[11vw] lg:text-[10vw] leading-[0.75] tracking-tight text-[#0F172A] uppercase font-semibold will-change-transform"
               style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600 }}
             >
               We Create
@@ -72,23 +105,23 @@ const HomeHero = () => {
           </div>
 
           {/* Line 2 - with video/badge element */}
-          <div ref={line2Ref} className="overflow-hidden flex items-center gap-2 md:gap-4">
-            {/* Small video/image badge */}
+          <div ref={line2Ref} className="overflow-hidden flex items-center py-1">
+            {/* Small video badge */}
             <div
-              className="relative w-[18vw] sm:w-[15vw] md:w-[12vw] h-[10vw] sm:h-[8.5vw] md:h-[7vw] lg:h-[6.5vw] rounded-md overflow-hidden flex-shrink-0 mt-[0.5vw]"
-              style={{ background: 'linear-gradient(135deg, #df1612 0%, #b7120e 100%)' }}
+              className="badge-element relative h-[10vw] sm:h-[8.5vw] md:h-[7vw] lg:h-[6.5vw] rounded-md overflow-hidden flex-shrink-0 will-change-[width,opacity]"
+              style={{ marginTop: 'calc(0.5vw + 1px)' }}
             >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-              {/* Decorative elements */}
-              <div className="absolute bottom-1 left-1 w-6 h-4 sm:w-8 sm:h-6 md:w-10 md:h-8 bg-[#df1612] rounded-sm opacity-80" />
-              <div className="absolute bottom-1.5 left-2 sm:bottom-2 sm:left-3 w-4 h-3 sm:w-6 sm:h-4 md:w-8 md:h-6 bg-white/90 rounded-sm" />
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+                src="https://videos.pexels.com/video-files/3209828/3209828-uhd_2560_1440_25fps.mp4"
+              />
             </div>
             <h1
-              className="text-[16.5vw] sm:text-[14vw] md:text-[11vw] lg:text-[10vw] leading-[0.75] tracking-tight text-[#0F172A] uppercase font-semibold"
+              className="text-[16.5vw] sm:text-[14vw] md:text-[11vw] lg:text-[10vw] leading-[0.75] tracking-tight text-[#0F172A] uppercase font-semibold will-change-transform"
               style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600 }}
             >
               Eye-Opening
@@ -96,9 +129,9 @@ const HomeHero = () => {
           </div>
 
           {/* Line 3 */}
-          <div ref={line3Ref} className="overflow-hidden">
+          <div ref={line3Ref} className="overflow-hidden py-1">
             <h1
-              className="text-[16.5vw] sm:text-[14vw] md:text-[11vw] lg:text-[10vw] leading-[0.75] tracking-tight text-[#0F172A] uppercase font-semibold"
+              className="text-[16.5vw] sm:text-[14vw] md:text-[11vw] lg:text-[10vw] leading-[0.75] tracking-tight text-[#0F172A] uppercase font-semibold will-change-transform"
               style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600 }}
             >
               Experiences
@@ -110,7 +143,7 @@ const HomeHero = () => {
       {/* Bottom Bar */}
       <div
         ref={bottomRef}
-        className="w-full border-t border-gray-200 px-[5vw] md:px-12 lg:px-20 py-5 md:py-6"
+        className="w-full border-t border-gray-200 px-[5vw] md:px-12 lg:px-20 py-5 md:py-6 will-change-transform opacity-0"
       >
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-4">
           {/* Left tagline */}

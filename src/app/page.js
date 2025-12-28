@@ -46,7 +46,7 @@ export default function Home() {
         />
 
         {/* Hero Section */}
-        <HomeHero />
+        <HomeHero startAnimation={splashComplete} />
 
         {/* CTA Section */}
         <CTA />

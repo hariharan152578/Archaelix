@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ScrollFloat from './ScrollFloat';
 
 // Register ScrollTrigger
 if (typeof window !== 'undefined') {
@@ -84,21 +85,58 @@ const HomeStacking = () => {
                         <div className="container mx-auto px-6 py-16 md:py-20">
                             {/* Center-aligned content container */}
                             <div className={`${section.textClass} flex flex-col items-center text-center max-w-4xl mx-auto`}>
-                                {/* Big Heading */}
-                                <h2
-                                    className="text-[10vw] md:text-[8vw] lg:text-[7vw] mb-6 text-white leading-[0.85] tracking-tight uppercase"
+                                { /* Big Heading */}
+                                <ScrollFloat
+                                    containerClassName="mb-6"
+                                    textClassName="text-[10vw] md:text-[8vw] lg:text-[7vw] text-white leading-[0.85] tracking-tight uppercase"
                                     style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600 }}
+                                    animationDuration={1}
+                                    stagger={0.03}
+                                    scrollStart="top 80%"
+                                    scrollEnd="bottom 20%"
                                 >
                                     {section.heading}
-                                </h2>
+                                </ScrollFloat>
 
-                                {/* Small Paragraph */}
-                                <p
-                                    className="text-lg md:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl leading-relaxed"
+                                { /* Small Paragraph */}
+                                <ScrollFloat
+                                    containerClassName="mb-8 max-w-2xl"
+                                    textClassName="text-lg md:text-xl lg:text-2xl text-white/90 leading-relaxed"
                                     style={{ fontFamily: "'NeueMontreal', sans-serif" }}
+                                    animationDuration={0.8}
+                                    stagger={0.01}
+                                    scrollStart="top 85%"
+                                    scrollEnd="bottom 30%"
                                 >
                                     {section.description}
-                                </p>
+                                </ScrollFloat>
+
+                                {/* Action Button */}
+                                <div className="mb-12">
+                                    <a
+                                        href="#explore"
+                                        className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium border-2 border-white/30 rounded-full transition-all duration-300 hover:border-white"
+                                    >
+                                        <span className="relative text-white group-hover:pr-6 transition-all duration-300">
+                                            Explore Our Work
+                                        </span>
+                                        <span className="absolute right-0 opacity-0 transform translate-x-3 group-hover:opacity-100 group-hover:translate-x-[-1.5rem] transition-all duration-300">
+                                            <svg
+                                                className="w-5 h-5 text-white"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth="2"
+                                                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                                />
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
 
                                 {/* Image below text */}
                                 <div className="w-full max-w-5xl">
