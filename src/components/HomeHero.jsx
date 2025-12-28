@@ -109,7 +109,7 @@ const HomeHero = ({ startAnimation }) => {
             {/* Small video badge */}
             <div
               className="badge-element relative h-[10vw] sm:h-[8.5vw] md:h-[7vw] lg:h-[6.5vw] rounded-md overflow-hidden flex-shrink-0 will-change-[width,opacity]"
-              style={{ marginTop: 'calc(0.5vw + 1px)' }}
+              style={{ marginTop: 'calc(1vw + 2px)' }}
             >
               <video
                 autoPlay

@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollFloat from './ScrollFloat';
+import CircularButton from './CircularButton';
 
 // Register ScrollTrigger
 if (typeof window !== 'undefined') {
@@ -51,6 +52,8 @@ const HomeStacking = () => {
             bgColor: 'linear-gradient(135deg, #df1612 0%, #b7120e 100%)',
             mainClass: 'main-part-1',
             textClass: 'text-container-1',
+            buttonText: 'DIGITAL MARKETING',
+            link: '/services/digital-marketing',
         },
         {
             id: 2,
@@ -60,6 +63,8 @@ const HomeStacking = () => {
             bgColor: 'linear-gradient(135deg, #b7120e 0%, #b52914 100%)',
             mainClass: 'main-part-2',
             textClass: 'text-container-2',
+            buttonText: 'IT SERVICES',
+            link: '/services/it-services',
         },
         {
             id: 3,
@@ -69,6 +74,8 @@ const HomeStacking = () => {
             bgColor: 'linear-gradient(135deg, #f2423e 0%, #df1612 50%, #b7120e 100%)',
             mainClass: 'main-part-3',
             textClass: 'text-container-3',
+            buttonText: 'NOVIX STUDIOS',
+            link: '/services/novix-studios',
         },
     ];
 
@@ -111,35 +118,8 @@ const HomeStacking = () => {
                                     {section.description}
                                 </ScrollFloat>
 
-                                {/* Action Button */}
-                                <div className="mb-12">
-                                    <a
-                                        href="#explore"
-                                        className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium border-2 border-white/30 rounded-full transition-all duration-300 hover:border-white"
-                                    >
-                                        <span className="relative text-white group-hover:pr-6 transition-all duration-300">
-                                            Explore Our Work
-                                        </span>
-                                        <span className="absolute right-0 opacity-0 transform translate-x-3 group-hover:opacity-100 group-hover:translate-x-[-1.5rem] transition-all duration-300">
-                                            <svg
-                                                className="w-5 h-5 text-white"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                viewBox="0 0 24 24"
-                                            >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                                />
-                                            </svg>
-                                        </span>
-                                    </a>
-                                </div>
-
-                                {/* Image below text */}
-                                <div className="w-full max-w-5xl">
+                                {/* Image with button overlay */}
+                                <div className="w-full max-w-5xl mt-8">
                                     <div className="relative group">
                                         {/* Glowing border effect */}
                                         <div
@@ -159,6 +139,14 @@ const HomeStacking = () => {
                                             className="absolute inset-0 rounded-2xl opacity-20"
                                             style={{ background: 'linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.3) 100%)' }}
                                         />
+
+                                        {/* Circular Button - positioned on top right of image */}
+                                        <div className="absolute -top-6 -right-6 md:-top-8 md:-right-8 z-10">
+                                            <CircularButton
+                                                text={section.buttonText}
+                                                href={section.link}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>

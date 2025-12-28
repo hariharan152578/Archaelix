@@ -1,0 +1,133 @@
+/* Circular Rotating Button */
+.circular-button {
+    cursor: pointer;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    place-content: center;
+    transition:
+        background 300ms,
+        transform 200ms;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.circular-button__text {
+    position: absolute;
+    inset: 0;
+    animation: circular-text-rotation 8s linear infinite;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+}
+
+.circular-button__text>span {
+    position: absolute;
+    transform: rotate(calc(18deg * var(--index)));
+    inset: 5px;
+    transform-origin: center center;
+}
+
+.circular-button__circle {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    overflow: hidden;
+    background: #fff;
+    color: #df1612;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 300ms, color 300ms;
+}
+
+.circular-button__icon {
+    width: 10px;
+    height: 10px;
+}
+
+.circular-button__icon--copy {
+    position: absolute;
+    transform: translate(-150%, 150%);
+}
+
+.circular-button:hover {
+    background: #fff;
+    transform: scale(1.05);
+}
+
+.circular-button:hover .circular-button__text {
+    color: #0F172A;
+}
+
+.circular-button:hover .circular-button__circle {
+    background: #df1612;
+    color: #fff;
+}
+
+.circular-button:hover .circular-button__icon:first-child {
+    transition: transform 0.3s ease-in-out;
+    transform: translate(150%, -150%);
+}
+
+.circular-button:hover .circular-button__icon--copy {
+    transition: transform 0.3s ease-in-out 0.1s;
+    transform: translate(0);
+}
+
+@keyframes circular-text-rotation {
+    to {
+        rotate: 360deg;
+    }
+}
+
+/* Responsive sizing */
+@media (min-width: 768px) {
+    .circular-button {
+        width: 80px;
+        height: 80px;
+    }
+
+    .circular-button__text {
+        font-size: 9px;
+    }
+
+    .circular-button__circle {
+        width: 32px;
+        height: 32px;
+    }
+
+    .circular-button__icon {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .circular-button {
+        width: 90px;
+        height: 90px;
+    }
+
+    .circular-button__text {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .circular-button__circle {
+        width: 36px;
+        height: 36px;
+    }
+
+    .circular-button__icon {
+        width: 14px;
+        height: 14px;
+    }
+}

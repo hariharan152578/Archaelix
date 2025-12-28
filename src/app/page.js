@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HomeHero from "../components/HomeHero";
 import StaggeredMenu from "../components/StaggeredMenu";
 import HomeStacking from "../components/HomeStacking";
@@ -14,6 +14,22 @@ import Ready from "../components/Ready/Ready";
 
 export default function Home() {
   const [splashComplete, setSplashComplete] = useState(false);
+
+  // Lock scroll during splash screen
+  useEffect(() => {
+    if (!splashComplete) {
+      // Disable scrolling
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Enable scrolling after splash completes
+      document.body.style.overflow = '';
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [splashComplete]);
 
   const menuItems = [
     { label: "Home", link: "/" },
