@@ -25,9 +25,14 @@ export default function ITServicesPage() {
 
     const menuItems = [
         { label: "Home", link: "/" },
-        { label: "Digital Marketing", link: "/services/digital-marketing" },
-        { label: "IT Services", link: "/services/it-services" },
-        { label: "Novix Studios", link: "/services/novix-studios" },
+        {
+            label: "Services",
+            subItems: [
+                { label: "Digital Marketing", link: "/services/digital-marketing" },
+                { label: "IT Services", link: "/services/it-services" },
+                { label: "Novix Studios", link: "/services/novix-studios" },
+            ]
+        },
         { label: "Contact", link: "/contact" },
     ];
 

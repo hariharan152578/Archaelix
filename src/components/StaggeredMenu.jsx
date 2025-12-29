@@ -23,6 +23,7 @@ const StaggeredMenu = ({
   onMenuClose
 }) => {
   const [open, setOpen] = useState(false);
+  const [activeSubMenu, setActiveSubMenu] = useState(null);
   const openRef = useRef(false);
 
   const panelRef = useRef(null);
@@ -443,24 +444,77 @@ const StaggeredMenu = ({
               role="list"
               data-numbering={displayItemNumbering || undefined}>
               {items && items.length ? (
-                items.map((it, idx) => (
-                  <li
-                    className="sm-panel-itemWrap relative overflow-hidden leading-none"
-                    key={it.label + idx}>
-                    <a
-                      className="sm-panel-item font-heading relative text-black font-semibold text-[4rem] md:text-[5rem] cursor-pointer leading-[0.9] uppercase transition-[color] duration-150 ease-linear inline-block no-underline pr-[1.4em] group"
-                      href={it.link}
-                      aria-label={it.ariaLabel}
-                      data-index={idx + 1}
-                      onClick={closeMenu}>
-                      <span
-                        className="sm-panel-itemLabel inline-block will-change-transform group-hover:text-[#df1612] transition-colors"
-                        style={{ fontFamily: 'FoundersGrotesk, sans-serif' }}>
-                        {it.label}
-                      </span>
-                    </a>
-                  </li>
-                ))
+                items.map((it, idx) => {
+                  const hasSubItems = it.subItems && it.subItems.length > 0;
+                  const isExpanded = activeSubMenu === idx;
+
+                  return (
+                    <li
+                      className="sm-panel-itemWrap relative leading-none mb-4"
+                      key={it.label + idx}
+                      onMouseEnter={() => hasSubItems && setActiveSubMenu(idx)}
+                      onMouseLeave={() => hasSubItems && setActiveSubMenu(null)}
+                    >
+                      <div className="flex flex-col">
+                        <a
+                          className={`sm-panel-item font-heading relative text-black font-semibold text-[4rem] md:text-[5rem] cursor-pointer leading-[0.9] uppercase transition-[color] duration-150 ease-linear inline-block no-underline pr-[1.4em] group ${hasSubItems ? 'flex items-center gap-4' : ''}`}
+                          href={hasSubItems ? undefined : it.link}
+                          aria-label={it.ariaLabel}
+                          data-index={idx + 1}
+                          onClick={(e) => {
+                            if (hasSubItems) {
+                              e.preventDefault();
+                              setActiveSubMenu(isExpanded ? null : idx);
+                            } else {
+                              closeMenu();
+                            }
+                          }}>
+                          <span
+                            className="sm-panel-itemLabel inline-block will-change-transform group-hover:text-[#df1612] transition-colors"
+                            style={{ fontFamily: 'FoundersGrotesk, sans-serif' }}>
+                            {it.label}
+                          </span>
+
+                          {hasSubItems && (
+                            <span className={`text-[1.5rem] transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
+                              ↓
+                            </span>
+                          )}
+                        </a>
+
+                        {/* Sub-items with staggered animation */}
+                        {hasSubItems && (
+                          <div
+                            className={`sm-submenu overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.76,0,0.24,1)] mt-4 pl-4 border-l-2 border-[#df1612]/20 ${isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
+                          >
+                            <ul className="flex flex-col gap-2 py-4">
+                              {it.subItems.map((sub, sIdx) => (
+                                <li key={sub.label + sIdx} className="overflow-hidden py-1">
+                                  <a
+                                    href={sub.link}
+                                    className="sm-submenu-item block text-[1.4rem] md:text-[2rem] font-medium text-slate-500 hover:text-[#df1612] transition-all duration-[900ms] ease-[cubic-bezier(0.76,0,0.24,1)] uppercase"
+                                    style={{
+                                      fontFamily: 'FoundersGrotesk, sans-serif',
+                                      transform: isExpanded ? 'translateY(0) rotate(0deg)' : 'translateY(160%) rotate(6deg)',
+                                      transitionDelay: `${isExpanded ? 0.1 + (sIdx * 0.12) : 0}s`,
+                                      opacity: isExpanded ? 1 : 0
+                                    }}
+                                    onClick={closeMenu}
+                                  >
+                                    <span className="flex items-center gap-3">
+                                      <span className="w-4 h-[1px] bg-[#df1612] transition-all duration-300 transform scale-x-0 origin-left group-hover:scale-x-100" />
+                                      {sub.label}
+                                    </span>
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    </li>
+                  );
+                })
               ) : null}
             </ul>
 
