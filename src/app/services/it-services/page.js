@@ -28,9 +28,9 @@ export default function ITServicesPage() {
         {
             label: "Services",
             subItems: [
-                { label: "Digital Marketing", link: "/services/digital-marketing" },
+                { label: "Business Consultation", link: "/services/business-consulting" },
                 { label: "IT Services", link: "/services/it-services" },
-                { label: "Novix Studios", link: "/services/novix-studios" },
+                { label: "Digital Marketing", link: "/services/digital-marketing" },
             ]
         },
         { label: "Contact", link: "/contact" },

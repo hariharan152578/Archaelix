@@ -22,12 +22,20 @@ const ScrollFloat = ({
 
     const splitText = useMemo(() => {
         const text = typeof children === 'string' ? children : '';
-        return text.split('').map((char, index) => (
-            <span
-                key={index}
-                className="inline-block"
-            >
-                {char === ' ' ? '\u00A0' : char}
+        const words = text.split(' ');
+        return words.map((word, wordIdx) => (
+            <span key={wordIdx} className="inline-block whitespace-nowrap">
+                {word.split('').map((char, charIdx) => (
+                    <span
+                        key={`${wordIdx}-${charIdx}`}
+                        className="scroll-char inline-block"
+                    >
+                        {char}
+                    </span>
+                ))}
+                {wordIdx < words.length - 1 && (
+                    <span className="scroll-char inline-block">&nbsp;</span>
+                )}
             </span>
         ));
     }, [children]);
@@ -36,7 +44,7 @@ const ScrollFloat = ({
         const el = containerRef.current;
         if (!el) return;
 
-        const chars = el.querySelectorAll('span');
+        const chars = el.querySelectorAll('.scroll-char');
 
         const tl = gsap.timeline({
             scrollTrigger: {

@@ -46,19 +46,19 @@ const HomeStacking = () => {
     const sections = [
         {
             id: 1,
-            heading: 'Digital Marketing',
-            description: 'We craft data-driven digital strategies that align with your business goals and drive measurable results.',
-            img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
+            heading: 'Business Consultation',
+            description: 'We provide strategic guidance and expert advice to help your business achieve its full potential and navigate complex challenges.',
+            img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2670&auto=format&fit=crop',
             bgColor: 'linear-gradient(135deg, #df1612 0%, #b7120e 100%)',
             mainClass: 'main-part-1',
             textClass: 'text-container-1',
-            buttonText: 'DIGITAL MARKETING',
-            link: '/services/digital-marketing',
+            buttonText: 'BUSINESS CONSULTATION',
+            link: '/services/business-consulting',
         },
         {
             id: 2,
             heading: 'IT Services',
-            description: 'Our creative team transforms ideas into stunning visuals that captivate your audience and elevate your brand.',
+            description: 'Our technical experts deliver robust IT solutions and infrastructure that power your digital transformation and operational excellence.',
             img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2564&auto=format&fit=crop',
             bgColor: 'linear-gradient(135deg, #b7120e 0%, #b52914 100%)',
             mainClass: 'main-part-2',
@@ -68,14 +68,14 @@ const HomeStacking = () => {
         },
         {
             id: 3,
-            heading: 'Novix Studios',
-            description: 'We scale your digital presence with performance marketing and in-depth analytics to maximize your ROI.',
-            img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop',
+            heading: 'Digital Marketing',
+            description: 'We craft data-driven digital strategies that align with your business goals and drive measurable results through multi-channel excellence.',
+            img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
             bgColor: 'linear-gradient(135deg, #f2423e 0%, #df1612 50%, #b7120e 100%)',
             mainClass: 'main-part-3',
             textClass: 'text-container-3',
-            buttonText: 'NOVIX STUDIOS',
-            link: '/services/novix-studios',
+            buttonText: 'DIGITAL MARKETING',
+            link: '/services/digital-marketing',
         },
     ];
 
@@ -91,16 +91,16 @@ const HomeStacking = () => {
                     >
                         <div className="container mx-auto px-6 py-16 md:py-20">
                             {/* Center-aligned content container */}
-                            <div className={`${section.textClass} flex flex-col items-center text-center max-w-4xl mx-auto`}>
+                            <div className={`${section.textClass} flex flex-col items-center text-center max-w-5xl mx-auto`}>
                                 { /* Big Heading */}
                                 <ScrollFloat
-                                    containerClassName="mb-6"
-                                    textClassName="text-[10vw] md:text-[8vw] lg:text-[7vw] text-white leading-[0.85] tracking-tight uppercase"
-                                    style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600 }}
-                                    animationDuration={1}
-                                    stagger={0.03}
-                                    scrollStart="top 80%"
-                                    scrollEnd="bottom 20%"
+                                    containerClassName="mb-10"
+                                    textClassName="text-[9vw] md:text-[8vw] lg:text-[7.5vw] text-white leading-[0.9] uppercase"
+                                    style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600, letterSpacing: '0.05em' }}
+                                    animationDuration={0.8}
+                                    stagger={0.02}
+                                    scrollStart="top 90%"
+                                    scrollEnd="bottom 10%"
                                 >
                                     {section.heading}
                                 </ScrollFloat>

@@ -7,7 +7,7 @@ import Footer from '../../../components/Footer';
 import SmoothScroll from '../../../components/SmoothScroll';
 import SplashScreen from '../../../components/SplashScreen';
 
-export default function DigitalMarketingPage() {
+export default function BusinessConsultationPage() {
     const [splashComplete, setSplashComplete] = useState(false);
 
     // Lock scroll during splash screen
@@ -38,34 +38,34 @@ export default function DigitalMarketingPage() {
 
     const services = [
         {
-            title: "SEO Optimization",
-            description: "Boost your search rankings and drive organic traffic with our data-driven SEO strategies.",
-            icon: "🔍",
-        },
-        {
-            title: "Social Media Marketing",
-            description: "Build your brand presence and engage your audience across all social platforms.",
-            icon: "📱",
-        },
-        {
-            title: "Content Marketing",
-            description: "Create compelling content that resonates with your audience and drives conversions.",
-            icon: "✍️",
-        },
-        {
-            title: "PPC Advertising",
-            description: "Maximize ROI with targeted pay-per-click campaigns on Google and social media.",
+            title: "Strategic Planning",
+            description: "Develop long-term strategies that align your business goals with market opportunities.",
             icon: "📈",
         },
         {
-            title: "Email Marketing",
-            description: "Nurture leads and drive sales with personalized email campaigns.",
-            icon: "📧",
+            title: "Market Analysis",
+            description: "Deep dive into market trends and competitor behavior to find your competitive edge.",
+            icon: "🔍",
         },
         {
-            title: "Analytics & Reporting",
-            description: "Track performance and make data-driven decisions with comprehensive analytics.",
-            icon: "📊",
+            title: "Operational Excellence",
+            description: "Optimize your business processes for maximum efficiency and reduced costs.",
+            icon: "⚙️",
+        },
+        {
+            title: "Financial Consulting",
+            description: "Expert guidance on financial planning, budgeting, and investment strategies.",
+            icon: "💰",
+        },
+        {
+            title: "Brand Strategy",
+            description: "Build a powerful brand identity that resonates with your target audience.",
+            icon: "🏷️",
+        },
+        {
+            title: "Growth Advisory",
+            description: "Identify and capitalize on new growth channels and business expansion opportunities.",
+            icon: "🚀",
         },
     ];
 
@@ -111,14 +111,14 @@ export default function DigitalMarketingPage() {
                             className="text-[12vw] md:text-[10vw] lg:text-[8vw] text-white leading-[0.9] tracking-tight uppercase mb-8"
                             style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600 }}
                         >
-                            Digital<br />Marketing
+                            Business<br />Consultation
                         </h1>
 
                         <p
                             className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed"
                             style={{ fontFamily: "'NeueMontreal', sans-serif" }}
                         >
-                            We craft data-driven digital strategies that align with your business goals and drive measurable results.
+                            We provide strategic guidance and expert advice to help your business achieve its full potential and navigate complex challenges.
                         </p>
                     </div>
 
@@ -133,7 +133,7 @@ export default function DigitalMarketingPage() {
                             className="text-4xl md:text-5xl lg:text-6xl text-[#0F172A] text-center mb-16"
                             style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600 }}
                         >
-                            Our Services
+                            Our Consulting Services
                         </h2>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -168,13 +168,13 @@ export default function DigitalMarketingPage() {
                             className="text-4xl md:text-5xl lg:text-6xl text-white mb-8"
                             style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600 }}
                         >
-                            Ready to Grow?
+                            Let's Strategize Success
                         </h2>
                         <p
                             className="text-xl text-white/80 mb-12"
                             style={{ fontFamily: "'NeueMontreal', sans-serif" }}
                         >
-                            Let's create a digital marketing strategy that drives real results for your business.
+                            Take your business to the next level with our expert consultation services.
                         </p>
                         <Link
                             href="/contact"
@@ -194,4 +194,3 @@ export default function DigitalMarketingPage() {
         </>
     );
 }
-

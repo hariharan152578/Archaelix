@@ -166,7 +166,7 @@ const CTA = () => {
                         transition: isScrollingDown ? 'opacity 0.3s ease-in' : 'opacity 0.08s ease-out'
                     }}
                 >
-                    Ready to Transform Your Digital Presence?
+                   Launch Your Digital & Business Growth Project
                 </h2>
 
                 {/* CTA Button */}
