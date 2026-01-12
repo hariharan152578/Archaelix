@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { gsap } from 'gsap';
 import StaggeredMenu from '../../../components/StaggeredMenu';
 import Footer from '../../../components/Footer';
 import SmoothScroll from '../../../components/SmoothScroll';
@@ -16,6 +17,39 @@ export default function BusinessConsultationPage() {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = '';
+
+            // Trigger GSAP Hero Animations matching Careers Page exactly
+            const tl = gsap.timeline();
+
+            tl.to('.hero-line-1', {
+                y: 0,
+                opacity: 1,
+                duration: 1.5,
+                ease: "power4.out",
+                delay: 0.2
+            })
+                .to('.hero-line-2', {
+                    x: 0,
+                    opacity: 1,
+                    duration: 1.5,
+                    ease: "power4.out"
+                }, "<0.15")
+                .to('.hero-line-3', {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1.5,
+                    ease: "power4.out"
+                }, "<0.15")
+                .fromTo('.hero-desc',
+                    { opacity: 0, y: 20 },
+                    { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+                    "-=1"
+                )
+                .fromTo('.hero-line-separator',
+                    { width: 0, opacity: 0 },
+                    { width: '4rem', opacity: 1, duration: 1, ease: "power2.out" },
+                    "-=1"
+                );
         }
 
         return () => {
@@ -36,47 +70,48 @@ export default function BusinessConsultationPage() {
         { label: "Contact", link: "/contact" },
     ];
 
-    const services = [
+    const offerings = [
         {
-            title: "Strategic Planning",
-            description: "Develop long-term strategies that align your business goals with market opportunities.",
-            icon: "📈",
+            title: "Business Strategy",
+            short: "Consulting",
+            description: "Our business strategy consulting services help organizations define clear goals, identify growth opportunities, and build practical strategies for long-term success. We work closely with startups, SMEs, and enterprises to develop data-driven business strategies, market positioning plans, and scalable growth models.",
+            detail: "By combining industry insights, competitor analysis, and operational planning, our business strategy consultants deliver actionable roadmaps that improve decision-making, optimize resources, and drive sustainable business growth.",
+            bg: "bg-[#F8FAFC]",
+            text: "text-[#0F172A]"
         },
         {
-            title: "Market Analysis",
-            description: "Deep dive into market trends and competitor behavior to find your competitive edge.",
-            icon: "🔍",
+            title: "Startup",
+            short: "Consulting",
+            description: "Our startup consulting services help entrepreneurs turn ideas into scalable businesses with the right strategy, structure, and execution. We support startups at every stage from idea validation and business model development to go-to-market strategy and growth planning.",
+            detail: "With expert startup consultants, market research, and data-driven insights, we help startups reduce risks, attract customers, and build sustainable business growth.",
+            bg: "bg-[#0F172A]",
+            text: "text-white"
         },
         {
-            title: "Operational Excellence",
-            description: "Optimize your business processes for maximum efficiency and reduced costs.",
-            icon: "⚙️",
+            title: "Digital Business",
+            short: "Consulting",
+            description: "Our digital business consulting services help organizations leverage technology, data, and digital strategies to accelerate growth and improve operational efficiency. We guide businesses through digital transformation, online business strategy, automation, and technology adoption.",
+            detail: "With expert digital business consultants, we create customized digital roadmaps that enhance customer experience, streamline processes, and drive measurable business results.",
+            bg: "bg-[#F8FAFC]",
+            text: "text-[#0F172A]"
         },
         {
-            title: "Financial Consulting",
-            description: "Expert guidance on financial planning, budgeting, and investment strategies.",
-            icon: "💰",
-        },
-        {
-            title: "Brand Strategy",
-            description: "Build a powerful brand identity that resonates with your target audience.",
-            icon: "🏷️",
-        },
-        {
-            title: "Growth Advisory",
-            description: "Identify and capitalize on new growth channels and business expansion opportunities.",
-            icon: "🚀",
-        },
+            title: "IT Consulting",
+            short: "Services",
+            description: "Our IT consulting services help businesses plan, implement, and manage the right technology solutions to improve performance, security, and scalability. We provide expert guidance on IT infrastructure, software solutions, cloud adoption, and digital systems aligned with your business goals.",
+            detail: "With experienced IT consultants and a strategic approach, we help organizations optimize technology investments, reduce risks, and support long-term digital growth.",
+            bg: "bg-[#df1612]",
+            text: "text-white"
+        }
     ];
 
     return (
         <>
             <SmoothScroll />
-
-            {/* Splash Screen */}
             <SplashScreen onComplete={() => setSplashComplete(true)} />
 
-            <div className="w-full min-h-screen bg-white">
+            {/* Main Content Container - fades in after splash */}
+            <div className={`w-full min-h-screen bg-white transition-opacity duration-700 ${splashComplete ? 'opacity-100' : 'opacity-0'}`}>
                 <StaggeredMenu
                     items={menuItems}
                     socialItems={[
@@ -90,101 +125,106 @@ export default function BusinessConsultationPage() {
                     accentColor="#df1612"
                 />
 
-                {/* Hero Section */}
-                <section
-                    className="min-h-screen flex items-center justify-center relative overflow-hidden"
-                    style={{ background: 'linear-gradient(135deg, #df1612 0%, #b7120e 100%)' }}
-                >
-                    <div className="container mx-auto px-6 py-20 text-center">
-                        <Link
-                            href="/"
-                            className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-8 transition-colors"
-                            style={{ fontFamily: "'NeueMontreal', sans-serif" }}
-                        >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-                            </svg>
-                            Back to Home
-                        </Link>
+                {/* Animated Hero Section */}
+                <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 lg:px-16 pb-20 pt-32 lg:pt-40 overflow-hidden">
+                    <div className="container mx-auto">
+                        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 lg:gap-8">
 
-                        <h1
-                            className="text-[12vw] md:text-[10vw] lg:text-[8vw] text-white leading-[0.9] tracking-tight uppercase mb-8"
-                            style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600 }}
-                        >
-                            Business<br />Consultation
-                        </h1>
+                            {/* Title Column */}
+                            <div className="w-full lg:w-3/4">
+                                <h1 className="text-[16.5vw] sm:text-[14vw] md:text-[11vw] lg:text-[10vw] leading-[0.75] tracking-tight text-[#0F172A] uppercase font-semibold will-change-transform" style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600 }}>
+                                    <div className="overflow-hidden">
+                                        {/* Line 1: Slides UP from bottom (translate-y-full) */}
+                                        <span className="hero-line-1 block translate-y-full opacity-0">
+                                            Business
+                                        </span>
+                                    </div>
+                                    <div className="overflow-hidden">
+                                        {/* Line 2: Slides RIGHT from left (-translate-x-full) */}
+                                        <span className="hero-line-2 block -translate-x-full opacity-0 text-[#df1612]">
+                                            Optimization
+                                        </span>
+                                    </div>
+                                    <div className="overflow-hidden">
+                                        {/* Line 3: Slides UP from bottom (translate-y-full) */}
+                                        <span className="hero-line-3 block translate-y-full opacity-0">
+                                            Services
+                                        </span>
+                                    </div>
+                                </h1>
+                            </div>
 
-                        <p
-                            className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed"
-                            style={{ fontFamily: "'NeueMontreal', sans-serif" }}
-                        >
-                            We provide strategic guidance and expert advice to help your business achieve its full potential and navigate complex challenges.
-                        </p>
-                    </div>
-
-                    {/* Decorative elements */}
-                    <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
-                </section>
-
-                {/* Services Grid */}
-                <section className="py-20 px-6">
-                    <div className="container mx-auto max-w-6xl">
-                        <h2
-                            className="text-4xl md:text-5xl lg:text-6xl text-[#0F172A] text-center mb-16"
-                            style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600 }}
-                        >
-                            Our Consulting Services
-                        </h2>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {services.map((service, index) => (
-                                <div
-                                    key={index}
-                                    className="group p-8 rounded-2xl border border-gray-200 hover:border-[#df1612] transition-all duration-300 hover:shadow-xl"
-                                >
-                                    <span className="text-4xl mb-4 block">{service.icon}</span>
-                                    <h3
-                                        className="text-xl font-semibold text-[#0F172A] mb-3"
-                                        style={{ fontFamily: "'FoundersGrotesk', sans-serif" }}
-                                    >
-                                        {service.title}
-                                    </h3>
-                                    <p
-                                        className="text-gray-600"
-                                        style={{ fontFamily: "'NeueMontreal', sans-serif" }}
-                                    >
-                                        {service.description}
+                            {/* Description Column */}
+                            <div className="w-full lg:w-1/4 pb-2">
+                                <div className="hero-desc opacity-0">
+                                    <div className="hero-line-separator h-0.5 bg-[#df1612] mb-6"></div>
+                                    <p className="text-lg md:text-xl font-sans font-light text-[#0F172A] leading-relaxed max-w-sm">
+                                        Our integrated digital marketing, IT, and business consulting services help organizations scale effectively through strategic planning and smart technology adoption.
                                     </p>
                                 </div>
-                            ))}
+                            </div>
+
                         </div>
                     </div>
                 </section>
 
+                {/* Services Series */}
+                <div className="flex flex-col">
+                    {offerings.map((item, index) => (
+                        <section
+                            key={index}
+                            className={`py-24 px-6 md:px-12 lg:px-16 ${item.bg} ${item.text}`}
+                        >
+                            <div className="container mx-auto">
+                                <div className="flex flex-col lg:flex-row gap-16 lg:items-start">
+                                    <div className="lg:w-1/3">
+                                        <h2 className="text-6xl md:text-7xl lg:text-8xl font-heading font-bold uppercase leading-none opacity-90">
+                                            {item.title}
+                                            <span className="block text-3xl md:text-4xl mt-2 font-normal font-sans opacity-60 tracking-normal capitalize">
+                                                {item.short}
+                                            </span>
+                                        </h2>
+                                    </div>
+                                    <div className="lg:w-2/3 lg:pt-4">
+                                        <div className="max-w-3xl space-y-8">
+                                            <p className="text-xl md:text-2xl font-sans font-light leading-relaxed border-l-2 border-current pl-6 opacity-90">
+                                                {item.description}
+                                            </p>
+                                            <p className="text-lg md:text-xl font-sans opacity-75">
+                                                {item.detail}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    ))}
+                </div>
+
                 {/* CTA Section */}
-                <section className="py-20 px-6 bg-[#0F172A]">
-                    <div className="container mx-auto max-w-4xl text-center">
-                        <h2
-                            className="text-4xl md:text-5xl lg:text-6xl text-white mb-8"
-                            style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600 }}
-                        >
-                            Let's Strategize Success
+                <section className="py-32 px-6 bg-[#0F172A] text-white relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-1/2 h-full bg-[#df1612] opacity-5 -skew-x-12 transform translate-x-1/4"></div>
+
+                    <div className="container mx-auto relative z-10 text-center max-w-4xl">
+                        <h2 className="text-5xl md:text-7xl font-heading font-bold mb-8 uppercase">
+                            Ready to Scale?
                         </h2>
-                        <p
-                            className="text-xl text-white/80 mb-12"
-                            style={{ fontFamily: "'NeueMontreal', sans-serif" }}
-                        >
-                            Take your business to the next level with our expert consultation services.
+                        <p className="text-xl md:text-2xl font-sans font-light text-white/80 mb-12 leading-relaxed">
+                            Let's transform your vision into a sustainable reality with our expert consultation.
                         </p>
+
                         <Link
                             href="/contact"
-                            className="inline-flex items-center gap-3 px-8 py-4 bg-[#df1612] text-white rounded-full text-lg font-medium hover:bg-[#b7120e] transition-colors"
-                            style={{ fontFamily: "'NeueMontreal', sans-serif" }}
+                            className="inline-block group"
                         >
-                            Start Your Project
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
+                            <div className="relative overflow-hidden rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-10 py-5 transition-all duration-300 hover:bg-[#df1612] hover:border-[#df1612]">
+                                <span className="relative z-10 font-sans text-lg font-medium text-white flex items-center gap-3">
+                                    Start Your Transformation
+                                    <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </span>
+                            </div>
                         </Link>
                     </div>
                 </section>

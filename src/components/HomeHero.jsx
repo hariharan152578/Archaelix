@@ -88,7 +88,7 @@ const HomeHero = ({ startAnimation }) => {
   return (
     <section
       ref={heroRef}
-      className="relative w-full min-h-screen bg-white overflow-hidden flex flex-col"
+      className="relative w-full min-h-[90vh] md:min-h-screen bg-white overflow-hidden flex flex-col"
     >
       {/* Main Content */}
       <div className="flex-1 flex flex-col justify-start md:justify-center px-[5vw] md:px-12 lg:px-20 pt-[20vh] md:pt-24 pb-6 md:pb-8">

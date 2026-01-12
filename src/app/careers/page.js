@@ -156,7 +156,7 @@ export default function CareersPage() {
                         <div className="flex flex-col lg:flex-row justify-between items-end mb-16 gap-8">
                             <div className="w-full lg:w-3/4">
                                 <div className="mb-6">
-                                    <h1 className="text-[13vw] sm:text-[11vw] leading-[0.8] font-semibold uppercase" style={{ fontFamily: "'FoundersGrotesk', sans-serif", letterSpacing: '0.002em' }}>
+                                    <h1 className="text-[16.5vw] sm:text-[14vw] md:text-[11vw] lg:text-[10vw] leading-[0.75] tracking-tight text-[#0F172A] uppercase font-semibold will-change-transform" style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600 }}>
                                         <div className="overflow-hidden">
                                             <span className="hero-line-1 block translate-y-full opacity-0">Grow Your</span>
                                         </div>

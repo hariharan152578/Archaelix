@@ -492,12 +492,11 @@ const StaggeredMenu = ({
                                 <li key={sub.label + sIdx} className="overflow-hidden py-1">
                                   <a
                                     href={sub.link}
-                                    className="sm-submenu-item block text-[1.4rem] md:text-[2rem] font-medium text-slate-500 hover:text-[#df1612] transition-all duration-[900ms] ease-[cubic-bezier(0.76,0,0.24,1)] uppercase"
+                                    className="sm-submenu-item block text-[1.4rem] md:text-[2rem] font-medium text-black hover:text-[#df1612] transition-all duration-300 ease-out uppercase"
                                     style={{
                                       fontFamily: 'FoundersGrotesk, sans-serif',
-                                      transform: isExpanded ? 'translateY(0) rotate(0deg)' : 'translateY(160%) rotate(6deg)',
-                                      transitionDelay: `${isExpanded ? 0.1 + (sIdx * 0.12) : 0}s`,
-                                      opacity: isExpanded ? 1 : 0
+                                      opacity: isExpanded ? 1 : 0,
+                                      transitionDelay: `${isExpanded ? 0.05 + (sIdx * 0.05) : 0}s`,
                                     }}
                                     onClick={closeMenu}
                                   >
