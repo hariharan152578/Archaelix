@@ -15,7 +15,7 @@ const Footer = () => {
     const lettersRef = useRef([]);
     const hasAnimatedRef = useRef(false);
 
-    const brandName = "archaelix";
+    const brandName = "Archaelix";
 
     useEffect(() => {
         // Wait for refs to be populated
@@ -132,7 +132,7 @@ const Footer = () => {
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-32">
                     <div className="col-span-2 lg:col-span-3">
                         <div className="mb-8">
-                            <span className="text-3xl font-bold font-heading">archaelix</span>
+                            <span className="text-3xl font-bold font-heading">Archaelix</span>
                         </div>
                         <p className="text-white/80 max-w-md text-lg leading-relaxed font-sans">
                             We bridge the gap between imagination and reality, crafting digital experiences that resonate and inspire.

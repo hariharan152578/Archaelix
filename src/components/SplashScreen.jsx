@@ -120,7 +120,7 @@ const SplashScreen = ({ onComplete }) => {
                     className="text-4xl md:text-7xl font-bold font-heading text-white"
                     style={{ fontFamily: "'FoundersGrotesk', sans-serif" }}
                 >
-                    archaelix
+                    Archaelix
                 </h1>
             </div>
         </div>

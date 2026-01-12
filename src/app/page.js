@@ -62,7 +62,7 @@ export default function Home() {
             { label: "LinkedIn", link: "#" },
             { label: "Twitter", link: "#" }
           ]}
-          logoText="archaelix"
+          logoText="Archaelix"
           menuButtonColor="#0F172A"
           openMenuButtonColor="#0F172A"
           accentColor="#df1612"
