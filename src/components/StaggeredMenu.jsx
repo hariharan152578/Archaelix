@@ -457,7 +457,7 @@ const StaggeredMenu = ({
                     >
                       <div className="flex flex-col">
                         <a
-                          className={`sm-panel-item font-heading relative text-black font-semibold text-[4rem] md:text-[5rem] cursor-pointer leading-[0.9] uppercase transition-[color] duration-150 ease-linear inline-block no-underline pr-[1.4em] group ${hasSubItems ? 'flex items-center gap-4' : ''}`}
+                          className={`sm-panel-item font-heading relative text-black font-semibold text-[4rem] md:text-[5rem] cursor-pointer leading-[0.9] uppercase transition-[color] duration-150 ease-linear no-underline pr-[1.4em] group ${hasSubItems ? 'flex items-center gap-4 whitespace-nowrap' : 'inline-block'}`}
                           href={hasSubItems ? undefined : it.link}
                           aria-label={it.ariaLabel}
                           data-index={idx + 1}
@@ -476,7 +476,7 @@ const StaggeredMenu = ({
                           </span>
 
                           {hasSubItems && (
-                            <span className={`text-[1.5rem] transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
+                            <span className="text-[1.5rem] transition-transform duration-300">
                               ↓
                             </span>
                           )}
@@ -558,11 +558,32 @@ const StaggeredMenu = ({
 .sm-scope .sm-panel-itemWrap { position: relative; overflow: hidden; line-height: 1; }
 .sm-scope .sm-icon-line { position: absolute; left: 50%; top: 50%; width: 100%; height: 2px; background: currentColor; border-radius: 2px; transform: translate(-50%, -50%); will-change: transform; }
 .sm-scope .sm-line { display: none !important; }
-.sm-scope .staggered-menu-panel { position: absolute; top: 0; right: 0; width: clamp(260px, 38vw, 420px); height: 100%; background: white; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; flex-direction: column; padding: 6em 2em 2em 2em; overflow-y: auto; z-index: 10; box-shadow: -10px 0 30px rgba(0,0,0,0.05); }
+.sm-scope .staggered-menu-panel { 
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+  width: clamp(260px, 38vw, 420px); 
+  height: 100%; 
+  background: white; 
+  backdrop-filter: blur(12px); 
+  -webkit-backdrop-filter: blur(12px); 
+  display: flex; 
+  flex-direction: column; 
+  padding: 6em 2em 2em 2em; 
+  overflow-y: auto; 
+  z-index: 10; 
+  box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+.sm-scope .staggered-menu-panel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
 .sm-scope .sm-prelayers { position: absolute; top: 0; right: 0; bottom: 0; width: clamp(260px, 38vw, 420px); pointer-events: none; z-index: 5; }
 .sm-scope .sm-prelayer { position: absolute; top: 0; right: 0; height: 100%; width: 100%; transform: translateX(0); }
 .sm-scope .sm-panel-list[data-numbering] { counter-reset: smItem; }
 .sm-scope .sm-panel-list[data-numbering] .sm-panel-item::after { counter-increment: smItem; content: counter(smItem, decimal-leading-zero); position: absolute; top: 0.1em; right: 3.2em; font-size: 18px; font-weight: 400; color: var(--sm-accent, #df1612); letter-spacing: 0; pointer-events: none; user-select: none; opacity: var(--sm-num-opacity, 0); }
+.sm-scope[data-open] { pointer-events: auto; }
 @media (max-width: 1024px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } }
 @media (max-width: 640px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } }
       `}</style>
