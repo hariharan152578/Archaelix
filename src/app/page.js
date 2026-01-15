@@ -10,6 +10,7 @@ import Footer from "../components/Footer";
 import SmoothScroll from "../components/SmoothScroll";
 import CEONote from "../components/CEONote";
 import Ready from "../components/Ready/Ready";
+import AboutSnippet from "../components/AboutSnippet";
 
 
 export default function Home() {
@@ -33,6 +34,7 @@ export default function Home() {
 
   const menuItems = [
     { label: "Home", link: "/" },
+    { label: "About", link: "/about" },
     {
       label: "Services",
       subItems: [
@@ -73,6 +75,9 @@ export default function Home() {
 
         {/* CTA Section */}
         <CTA />
+
+        {/* About Snippet Section */}
+        <AboutSnippet />
 
         {/* Stacking Section */}
         <HomeStacking />

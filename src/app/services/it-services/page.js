@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { gsap } from 'gsap';
 import StaggeredMenu from '../../../components/StaggeredMenu';
 import Footer from '../../../components/Footer';
 import SmoothScroll from '../../../components/SmoothScroll';
 import SplashScreen from '../../../components/SplashScreen';
+import RoundButton from '../../../components/RoundButton';
 
 export default function ITServicesPage() {
     const [splashComplete, setSplashComplete] = useState(false);
@@ -59,6 +59,7 @@ export default function ITServicesPage() {
 
     const menuItems = [
         { label: "Home", link: "/" },
+        { label: "About", link: "/about" },
         {
             label: "Services",
             subItems: [
@@ -67,6 +68,7 @@ export default function ITServicesPage() {
                 { label: "Digital Marketing", link: "/services/digital-marketing" },
             ]
         },
+        { label: "Careers", link: "/careers" },
         { label: "Contact", link: "/contact" },
     ];
 
@@ -229,19 +231,13 @@ export default function ITServicesPage() {
                             Transform your ideas into powerful digital solutions with our expert team.
                         </p>
 
-                        <Link
-                            href="/contact"
-                            className="inline-block group"
-                        >
-                            <div className="relative overflow-hidden rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-10 py-5 transition-all duration-300 hover:bg-[#df1612] hover:border-[#df1612]">
-                                <span className="relative z-10 font-sans text-lg font-medium text-white flex items-center gap-3">
-                                    Start Your Project
-                                    <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
-                                </span>
-                            </div>
-                        </Link>
+                        <div className="flex justify-center">
+                            <RoundButton
+                                href="/contact"
+                                title="Start Your Project"
+                                variant="white"
+                            />
+                        </div>
                     </div>
                 </section>
 

@@ -10,6 +10,9 @@ import SplashScreen from '../../components/SplashScreen';
 import ScrollFloat from '../../components/ScrollFloat';
 import RoundButton from '../../components/RoundButton';
 
+// React Icons
+import { HiOutlineUserGroup, HiOutlineTrendingUp, HiOutlineLightBulb, HiOutlineScale } from 'react-icons/hi';
+
 export default function CareersPage() {
     const [hoveredPosition, setHoveredPosition] = useState(null);
     const [splashComplete, setSplashComplete] = useState(false);
@@ -62,6 +65,7 @@ export default function CareersPage() {
 
     const menuItems = [
         { label: "Home", link: "/" },
+        { label: "About", link: "/about" },
         {
             label: "Services",
             subItems: [
@@ -78,24 +82,25 @@ export default function CareersPage() {
         {
             title: "Collaborative Environment",
             description: "A collaborative and supportive work environment where every voice is heard.",
-            icon: "🤝"
+            Icon: HiOutlineUserGroup
         },
         {
             title: "Growth & Development",
             description: "Opportunities for skill development and career progression tailored to you.",
-            icon: "📈"
+            Icon: HiOutlineTrendingUp
         },
         {
             title: "Innovation Driven",
             description: "Innovation that drives real business results and challenges the status quo.",
-            icon: "💡"
+            Icon: HiOutlineLightBulb
         },
         {
             title: "Work-Life Balance",
             description: "A balanced and healthy work-life culture that prioritizes your well-being.",
-            icon: "⚖️"
+            Icon: HiOutlineScale
         }
     ];
+
 
     const positions = [
         {
@@ -232,7 +237,9 @@ export default function CareersPage() {
                             <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 relative z-0">
                                 {culturePoints.map((point, i) => (
                                     <div key={i} className="p-6 sm:p-8 rounded-2xl bg-gray-50 hover:bg-[#df1612] hover:text-white transition-all duration-500 group border border-gray-100 h-full">
-                                        <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{point.icon}</div>
+                                        <div className="w-10 h-10 md:w-12 md:h-12 mb-4 text-[#df1612] group-hover:text-white group-hover:scale-110 transition-all duration-300 flex items-center justify-center">
+                                            <point.Icon className="w-8 h-8 md:w-10 md:h-10" />
+                                        </div>
                                         <h3 className="text-2xl font-semibold mb-3 group-hover:text-white" style={{ fontFamily: "'FoundersGrotesk', sans-serif" }}>{point.title}</h3>
                                         <p className="text-gray-600 group-hover:text-white/90 leading-relaxed" style={{ fontFamily: "'NeueMontreal', sans-serif" }}>{point.description}</p>
                                     </div>

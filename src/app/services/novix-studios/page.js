@@ -1,11 +1,21 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import StaggeredMenu from '../../../components/StaggeredMenu';
 import Footer from '../../../components/Footer';
 import SmoothScroll from '../../../components/SmoothScroll';
 import SplashScreen from '../../../components/SplashScreen';
+import RoundButton from '../../../components/RoundButton';
+
+// React Icons
+import {
+    HiOutlineSparkles,
+    HiOutlineFilm,
+    HiOutlineStar,
+    HiOutlineCamera,
+    HiOutlineCube,
+    HiOutlineColorSwatch
+} from 'react-icons/hi';
 
 export default function NovixStudiosPage() {
     const [splashComplete, setSplashComplete] = useState(false);
@@ -25,14 +35,16 @@ export default function NovixStudiosPage() {
 
     const menuItems = [
         { label: "Home", link: "/" },
+        { label: "About", link: "/about" },
         {
             label: "Services",
             subItems: [
-                { label: "Digital Marketing", link: "/services/digital-marketing" },
+                { label: "Business Consultation", link: "/services/business-consulting" },
                 { label: "IT Services", link: "/services/it-services" },
-                { label: "Novix Studios", link: "/services/novix-studios" },
+                { label: "Digital Marketing", link: "/services/digital-marketing" },
             ]
         },
+        { label: "Careers", link: "/careers" },
         { label: "Contact", link: "/contact" },
     ];
 
@@ -40,32 +52,32 @@ export default function NovixStudiosPage() {
         {
             title: "Brand Identity",
             description: "Create a distinctive brand identity that sets you apart from the competition.",
-            icon: "🎯",
+            Icon: HiOutlineSparkles,
         },
         {
             title: "Video Production",
             description: "Cinematic video content that tells your story and captivates your audience.",
-            icon: "🎬",
+            Icon: HiOutlineFilm,
         },
         {
             title: "Motion Graphics",
             description: "Dynamic animations and visual effects that bring your brand to life.",
-            icon: "✨",
+            Icon: HiOutlineStar,
         },
         {
             title: "Photography",
             description: "Professional photography services for products, events, and brand imagery.",
-            icon: "📸",
+            Icon: HiOutlineCamera,
         },
         {
             title: "3D Visualization",
             description: "Stunning 3D renders and animations for products and architectural projects.",
-            icon: "🎮",
+            Icon: HiOutlineCube,
         },
         {
             title: "Creative Direction",
             description: "Strategic creative guidance to ensure cohesive and impactful brand presence.",
-            icon: "🎨",
+            Icon: HiOutlineColorSwatch,
         },
     ];
 
@@ -140,17 +152,19 @@ export default function NovixStudiosPage() {
                             {services.map((service, index) => (
                                 <div
                                     key={index}
-                                    className="group p-8 rounded-2xl border border-gray-200 hover:border-[#df1612] transition-all duration-300 hover:shadow-xl"
+                                    className="group p-8 rounded-2xl border border-gray-200 hover:border-[#df1612] hover:bg-[#df1612] transition-all duration-300 hover:shadow-xl"
                                 >
-                                    <span className="text-4xl mb-4 block">{service.icon}</span>
+                                    <div className="w-10 h-10 md:w-12 md:h-12 mb-4 text-[#df1612] group-hover:text-white transition-colors duration-300 flex items-center justify-center">
+                                        <service.Icon className="w-8 h-8 md:w-10 md:h-10" />
+                                    </div>
                                     <h3
-                                        className="text-xl font-semibold text-[#0F172A] mb-3"
+                                        className="text-xl font-semibold text-[#0F172A] group-hover:text-white mb-3 transition-colors duration-300"
                                         style={{ fontFamily: "'FoundersGrotesk', sans-serif" }}
                                     >
                                         {service.title}
                                     </h3>
                                     <p
-                                        className="text-gray-600"
+                                        className="text-gray-600 group-hover:text-white/90 transition-colors duration-300"
                                         style={{ fontFamily: "'NeueMontreal', sans-serif" }}
                                     >
                                         {service.description}
@@ -176,16 +190,13 @@ export default function NovixStudiosPage() {
                         >
                             Let's bring your creative vision to life with stunning visuals and compelling stories.
                         </p>
-                        <Link
-                            href="/contact"
-                            className="inline-flex items-center gap-3 px-8 py-4 bg-[#df1612] text-white rounded-full text-lg font-medium hover:bg-[#b7120e] transition-colors"
-                            style={{ fontFamily: "'NeueMontreal', sans-serif" }}
-                        >
-                            Start Your Project
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </Link>
+                        <div className="flex justify-center">
+                            <RoundButton
+                                href="/contact"
+                                title="Start Your Project"
+                                variant="white"
+                            />
+                        </div>
                     </div>
                 </section>
 

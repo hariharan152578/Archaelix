@@ -14,31 +14,41 @@ import { ArrowUpRight } from "lucide-react";
 const variants = {
     primary: {
         className: "bg-[#df1612] text-white",
-        bgcolor: "#0F172A", // Hover background turns black
+        bgcolor: "#0F172A",
+        circleBg: "bg-white",
+        hoverCircleBg: "group-hover:bg-white",
         iconColor: "text-[#df1612]",
         hoverIconColor: "group-hover:text-[#0F172A]"
     },
     dark: {
         className: "bg-[#0F172A] text-white",
-        bgcolor: "#df1612", // Hover background turns orange
+        bgcolor: "#df1612",
+        circleBg: "bg-white",
+        hoverCircleBg: "group-hover:bg-white",
         iconColor: "text-[#0F172A]",
         hoverIconColor: "group-hover:text-[#df1612]"
     },
     darkWhite: {
         className: "bg-[#0F172A] text-white",
-        bgcolor: "#df1612", // Hover background turns primary
+        bgcolor: "#df1612",
+        circleBg: "bg-white",
+        hoverCircleBg: "group-hover:bg-white",
         iconColor: "text-[#0F172A]",
         hoverIconColor: "group-hover:text-[#df1612]"
     },
     white: {
         className: "bg-white text-[#0F172A] border border-[#eee]",
-        bgcolor: "#df1612", // Hover background turns orange
-        iconColor: "text-[#0F172A]",
-        hoverIconColor: "group-hover:text-[#df1612]"
+        bgcolor: "#df1612",
+        circleBg: "bg-[#df1612]", // Normal state: Orange circle
+        hoverCircleBg: "group-hover:bg-white", // Hover state: White circle
+        iconColor: "text-white", // Normal state: White arrow
+        hoverIconColor: "group-hover:text-[#df1612]" // Hover state: Orange arrow
     },
     orange: {
         className: "bg-[#df1612] text-white",
-        bgcolor: "white", // Hover background turns white
+        bgcolor: "white",
+        circleBg: "bg-white",
+        hoverCircleBg: "group-hover:bg-white",
         iconColor: "text-[#df1612]",
         hoverIconColor: "group-hover:text-[#df1612]"
     }
@@ -71,7 +81,7 @@ export default function RoundButton({
             <span className="relative z-10 text-[13px] sm:text-[15px] tracking-wide font-semibold transition-colors duration-300">
                 {title}
             </span>
-            <div className="w-[38px] h-[38px] sm:w-[45px] sm:h-[45px] bg-white rounded-full flex items-center justify-center relative z-10 transition-transform duration-300 group-hover:scale-110">
+            <div className={`w-[38px] h-[38px] sm:w-[45px] sm:h-[45px] ${selectedVariant.circleBg} ${selectedVariant.hoverCircleBg} rounded-full flex items-center justify-center relative z-10 transition-all duration-300 group-hover:scale-110`}>
                 <ArrowUpRight
                     size={20}
                     className={`sm:w-6 sm:h-6 ${iconBaseColor} ${iconHoverColor} transition-transform duration-500 group-hover:rotate-45`}
