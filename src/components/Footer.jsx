@@ -140,30 +140,27 @@ const Footer = () => {
                     </div>
 
                     <div className="flex flex-col gap-6">
-                        <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 font-sans">Resources</h4>
+                        <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 font-sans">Services</h4>
                         <ul className="flex flex-col gap-4 font-sans text-base font-medium">
-                            <li><a href="#" className="hover:text-white/60 transition-colors">Design Inspirations</a></li>
-                            <li><a href="#" className="hover:text-white/60 transition-colors">Channels</a></li>
-                            <li><a href="#" className="hover:text-white/60 transition-colors">UI Libraries</a></li>
-                            <li><a href="#" className="hover:text-white/60 transition-colors">Open Source</a></li>
+                            <li><a href="/services/business-consulting" className="hover:text-white/60 transition-colors">Business Consultation</a></li>
+                            <li><a href="/services/it-services" className="hover:text-white/60 transition-colors">IT Services</a></li>
+                            <li><a href="/services/digital-marketing" className="hover:text-white/60 transition-colors">Digital Marketing</a></li>
                         </ul>
                     </div>
 
                     <div className="flex flex-col gap-6">
                         <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 font-sans">Company</h4>
                         <ul className="flex flex-col gap-4 font-sans text-base font-medium">
-                            <li><a href="#" className="hover:text-white/60 transition-colors">About</a></li>
-                            <li><a href="#" className="hover:text-white/60 transition-colors">Work</a></li>
-                            <li><a href="#" className="hover:text-white/60 transition-colors">Contact</a></li>
+                            <li><a href="/about" className="hover:text-white/60 transition-colors">About</a></li>
+                            <li><a href="/careers" className="hover:text-white/60 transition-colors">Careers</a></li>
+                            <li><a href="/contact" className="hover:text-white/60 transition-colors">Contact</a></li>
                         </ul>
                     </div>
 
                     <div className="flex flex-col gap-6">
                         <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 font-sans">Socials</h4>
                         <ul className="flex flex-col gap-4 font-sans text-base font-medium">
-                            <li><a href="#" className="hover:text-white/60 transition-colors">Instagram</a></li>
                             <li><a href="#" className="hover:text-white/60 transition-colors">LinkedIn</a></li>
-                            <li><a href="#" className="hover:text-white/60 transition-colors">Twitter (X)</a></li>
                         </ul>
                     </div>
                 </div>

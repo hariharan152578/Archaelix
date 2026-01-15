@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import StaggeredMenu from '../../../components/StaggeredMenu';
+import Link from 'next/link';
 import Footer from '../../../components/Footer';
 import SmoothScroll from '../../../components/SmoothScroll';
 import SplashScreen from '../../../components/SplashScreen';
@@ -92,9 +93,7 @@ export default function NovixStudiosPage() {
                 <StaggeredMenu
                     items={menuItems}
                     socialItems={[
-                        { label: "Instagram", link: "#" },
-                        { label: "LinkedIn", link: "#" },
-                        { label: "Twitter", link: "#" }
+                        { label: "LinkedIn", link: "#" }
                     ]}
                     logoText="Archaelix"
                     menuButtonColor="#0F172A"

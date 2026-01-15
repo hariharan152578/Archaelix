@@ -7,7 +7,7 @@ const StaggeredMenu = ({
   position = 'right',
   colors = ['#df1612', '#b7120e'], // Kept your theme colors
   items = [],
-  socialItems = [],
+  socialItems = [{ label: "LinkedIn", link: "#" }],
   displaySocials = true,
   displayItemNumbering = true,
   className,

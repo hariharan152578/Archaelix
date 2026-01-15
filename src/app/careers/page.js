@@ -145,9 +145,7 @@ export default function CareersPage() {
                 <StaggeredMenu
                     items={menuItems}
                     socialItems={[
-                        { label: "Instagram", link: "#" },
-                        { label: "LinkedIn", link: "#" },
-                        { label: "Twitter", link: "#" }
+                        { label: "LinkedIn", link: "#" }
                     ]}
                     logoText="Archaelix"
                     menuButtonColor="#0F172A"
