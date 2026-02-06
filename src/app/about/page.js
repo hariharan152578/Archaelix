@@ -97,6 +97,8 @@ export default function AboutPage() {
                 { label: "Digital Marketing", link: "/services/digital-marketing" },
             ]
         },
+        //  {label: "Ceo", link: "/ceo" },
+        {label:"Client" ,link:"/client"},
         { label: "Careers", link: "/careers" },
         { label: "Contact", link: "/contact" },
     ];

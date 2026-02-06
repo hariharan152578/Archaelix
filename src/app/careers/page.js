@@ -16,6 +16,11 @@ import { HiOutlineUserGroup, HiOutlineTrendingUp, HiOutlineLightBulb, HiOutlineS
 export default function CareersPage() {
     const [hoveredPosition, setHoveredPosition] = useState(null);
     const [splashComplete, setSplashComplete] = useState(false);
+    
+    // Form & Modal States
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
 
     // Lock scroll during splash screen
     useEffect(() => {
@@ -63,6 +68,36 @@ export default function CareersPage() {
         };
     }, [splashComplete]);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        const formData = new FormData(e.currentTarget);
+
+        try {
+            // Adjust the endpoint to your actual mailer API
+            const response = await fetch('/api/submit-resume', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (response.ok) {
+                setSubmitStatus('success');
+                setTimeout(() => {
+                    setIsModalOpen(false);
+                    setSubmitStatus(null);
+                }, 3000);
+            } else {
+                setSubmitStatus('error');
+            }
+        } catch (error) {
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     const menuItems = [
         { label: "Home", link: "/" },
         { label: "About", link: "/about" },
@@ -74,6 +109,7 @@ export default function CareersPage() {
                 { label: "Digital Marketing", link: "/services/digital-marketing" },
             ]
         },
+        { label: "Client", link: "/client" },
         { label: "Careers", link: "/careers" },
         { label: "Contact", link: "/contact" },
     ];
@@ -100,7 +136,6 @@ export default function CareersPage() {
             Icon: HiOutlineScale
         }
     ];
-
 
     const positions = [
         {
@@ -144,9 +179,7 @@ export default function CareersPage() {
             <div className="w-full min-h-screen bg-white text-[#0F172A]">
                 <StaggeredMenu
                     items={menuItems}
-                    socialItems={[
-                        { label: "LinkedIn", link: "#" }
-                    ]}
+                    socialItems={[{ label: "LinkedIn", link: "#" }]}
                     logoText="Archaelix"
                     menuButtonColor="#0F172A"
                     openMenuButtonColor="#0F172A"
@@ -186,7 +219,6 @@ export default function CareersPage() {
                             </div>
                         </div>
 
-                        {/* Hero Image */}
                         <div className="w-full h-[50vh] md:h-[70vh] rounded-[2rem] overflow-hidden relative group opacity-0 hero-scale-anim">
                             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-700 z-10"></div>
                             <img
@@ -247,16 +279,14 @@ export default function CareersPage() {
                     </div>
                 </section>
 
-                {/* Journey Section (Horizontal Scroll or Steps) */}
+                {/* Journey Section */}
                 <section className="py-24 px-6 bg-[#f8f8f8]">
                     <div className="container mx-auto max-w-6xl">
                         <h2 className="text-5xl md:text-6xl font-semibold mb-16 tracking-tight uppercase text-center" style={{ fontFamily: "'FoundersGrotesk', sans-serif" }}>
                             Your Journey With Us
                         </h2>
                         <div className="flex flex-col md:flex-row gap-4 justify-between relative">
-                            {/* Connector Line (Desktop) */}
                             <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gray-200 -z-0"></div>
-
                             {journeySteps.map((step, i) => (
                                 <div key={i} className="relative z-10 flex-1 flex flex-col items-center text-center group">
                                     <div className="w-24 h-24 rounded-full bg-white border-2 border-[#df1612] flex items-center justify-center text-2xl font-bold text-[#df1612] mb-6 group-hover:bg-[#df1612] group-hover:text-white transition-colors duration-300 shadow-lg">
@@ -283,6 +313,7 @@ export default function CareersPage() {
                             {positions.map((pos, i) => (
                                 <div
                                     key={i}
+                                    onClick={() => setIsModalOpen(true)}
                                     onMouseEnter={() => setHoveredPosition(i)}
                                     onMouseLeave={() => setHoveredPosition(null)}
                                     className="group p-8 bg-white border border-gray-100 rounded-xl transition-all duration-300 cursor-pointer flex justify-between items-center shadow-sm hover:shadow-xl hover:bg-[#df1612] hover:border-[#df1612] hover:-translate-y-1"
@@ -291,20 +322,116 @@ export default function CareersPage() {
                                         {pos.title}
                                     </span>
                                     <div className="bg-gray-50 text-black p-2 rounded-full group-hover:bg-white/20 group-hover:text-white transition-all duration-300">
-                                        <svg className="w-5 h-5 transform group-hover:rotate-45 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                        <svg   onClick={() => setIsModalOpen(true)} className="w-5 h-5 transform group-hover:rotate-45 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                                     </div>
                                 </div>
                             ))}
                         </div>
                         <div className="mt-16 text-center">
                             <p className="text-gray-500 mb-6 text-lg">Don't see a perfect fit? We're always looking for talent.</p>
-                            <a href="mailto:hello@archaelix.design" className="inline-block border-b border-[#df1612] text-xl text-[#0F172A] hover:text-[#df1612] transition-colors pb-1">
-                                Send us your resume at hello@archaelix.design
-                            </a>
+                            <button 
+                                onClick={() => setIsModalOpen(true)}
+                                className="inline-block border-b border-[#df1612] text-xl text-[#0F172A] hover:text-[#df1612] transition-colors pb-1 cursor-pointer outline-none"
+                            >
+                                Send us your resume at Archaelix
+                            </button>
                         </div>
                     </div>
                 </section>
 
+                {/* APPLICATION MODAL */}
+               {isModalOpen && (
+    <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 sm:p-6">
+        {/* Backdrop */}
+        <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setIsModalOpen(false)}
+        ></div>
+
+        {/* Modal Container */}
+        <div className="relative bg-white w-full max-w-lg rounded-3xl p-6 md:p-8 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+            
+            {/* Scrollable Content Area */}
+            <div className="overflow-y-auto pr-2 custom-scrollbar">
+                <button 
+                    onClick={() => setIsModalOpen(false)}
+                    className="absolute top-6 right-6 text-gray-400 hover:text-black transition-colors z-10"
+                >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <h3 className="text-2xl md:text-3xl font-semibold mb-2" style={{ fontFamily: "'FoundersGrotesk', sans-serif" }}>
+                    Apply Now
+                </h3>
+                <p className="text-gray-500 mb-8" style={{ fontFamily: "'NeueMontreal', sans-serif" }}>
+                    Let's build something great together.
+                </p>
+
+                {submitStatus === 'success' ? (
+                    <div className="py-12 text-center">
+                        <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <p className="text-xl font-medium">Application Sent!</p>
+                        <p className="text-gray-500">We'll get back to you shortly.</p>
+                    </div>
+                ) : (
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <div className="grid grid-cols-1 gap-4">
+                            <input 
+                                required 
+                                name="name" 
+                                placeholder="Name" 
+                                className="w-full bg-gray-50 border-none p-4 rounded-xl outline-[#df1612]" 
+                            />
+                            <input 
+                                required 
+                                name="email" 
+                                type="email" 
+                                placeholder="Email Address" 
+                                className="w-full bg-gray-50 border-none p-4 rounded-xl outline-[#df1612]" 
+                            />
+                        </div>
+                        
+                        <div>
+                            <label className="block text-sm text-gray-500 mb-2 ml-1">Resume (PDF)</label>
+                            <input 
+                                required 
+                                name="resume" 
+                                type="file" 
+                                accept=".pdf" 
+                                className="w-full bg-gray-50 border-none p-4 rounded-xl file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-[#df1612]/10 file:text-[#df1612] hover:file:bg-[#df1612]/20" 
+                            />
+                        </div>
+
+                        <textarea 
+                            name="message" 
+                            rows="3" 
+                            placeholder="Tell us about yourself..." 
+                            className="w-full bg-gray-50 border-none p-4 rounded-xl outline-[#df1612]"
+                        ></textarea>
+                        
+                        {submitStatus === 'error' && (
+                            <p className="text-red-500 text-sm">Something went wrong. Please try again.</p>
+                        )}
+
+                        <button 
+                            type="submit" 
+                            disabled={isSubmitting}
+                            className="w-full bg-[#0F172A] text-white py-4 rounded-xl font-semibold hover:bg-[#df1612] transition-colors disabled:opacity-50"
+                        >
+                            {isSubmitting ? "Submitting..." : "Send Application"}
+                        </button>
+                    </form>
+                )}
+            </div>
+        </div>
+    </div>
+)}
                 <Footer />
             </div>
         </>

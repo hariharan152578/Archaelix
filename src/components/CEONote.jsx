@@ -73,7 +73,7 @@ const CEONote = () => {
     return (
         <section
             ref={sectionRef}
-            className="relative w-full min-h-screen bg-[#df1612] overflow-hidden flex items-center justify-center font-sans py-20"
+            className="relative w-full min-h-screen bg-white overflow-hidden flex items-center justify-center font-sans py-20"
         >
             <div className="relative w-full h-full max-w-[1800px] mx-auto grid grid-cols-1 lg:grid-cols-12 items-center z-10 px-8 md:px-20 gap-12 lg:gap-0">
 
@@ -81,7 +81,7 @@ const CEONote = () => {
                 {/* BIG BACKDROP TEXT */}
                 <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full pointer-events-none overflow-hidden opacity-5">
                     <h2
-                        className="text-[35vw] font-bold leading-none text-white whitespace-nowrap uppercase italic tracking-tighter"
+                        className="text-[35vw] font-bold leading-none text-[#df1612] whitespace-nowrap uppercase italic tracking-tighter"
                         style={{ fontFamily: "'FoundersGrotesk', sans-serif" }}
                     >
                         VISIONARY
@@ -103,9 +103,9 @@ const CEONote = () => {
                         ref={imageRevealRef}
                         className="relative w-[300px] h-[420px] md:w-[450px] md:h-[600px] overflow-hidden rounded-[2.5rem] shadow-[0_40px_80px_-15px_rgba(0,0,0,0.4)] bg-white p-3"
                     >
-                        <div className="w-full h-full rounded-[2rem] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000">
+                        <div className="w-full h-full rounded-[2rem] overflow-hidden  hover:grayscale-0 transition-all duration-1000">
                             <img
-                                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop"
+                                src="https://res.cloudinary.com/dlb52kdyx/image/upload/v1770294950/IMG_1585.JPG_qucalm.jpg"
                                 alt="CEO"
                                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                             />
@@ -126,30 +126,28 @@ const CEONote = () => {
                     <div ref={textContentRef} className="flex flex-col gap-10">
 
                         <div className="flex flex-col gap-4">
-                            <h3 className="text-white text-xs md:text-sm font-bold uppercase tracking-[0.4em] opacity-80">The Philosophy</h3>
+                            <h3 className="text-[#df1612] text-xs md:text-sm font-bold uppercase tracking-[0.4em] opacity-80">The Journey</h3>
                             <div className="w-16 h-[2px] bg-white opacity-30" />
                         </div>
 
                         <h2
                             ref={titleRef}
-                            className="text-[10vw] lg:text-[5.5vw] font-bold text-white leading-[0.85] uppercase italic"
+                            className="text-[10vw] lg:text-[5vw] font-bold text-[#df1612] leading-[0.85] uppercase italic"
                             style={{ fontFamily: "'FoundersGrotesk', sans-serif" }}
                         >
-                            Defining <br />
-                            The Digital <br />
-                            Standard.
+                            CEO's Story - Archaelix Ventures
                         </h2>
 
 
                         <div className="flex flex-col gap-8 max-w-lg">
-                            <p className="text-white/90 text-lg md:text-xl font-medium leading-relaxed tracking-tight" style={{ fontFamily: "'NeueMontreal', sans-serif" }}>
-                                "We don't just build websites; we architect emotional connections in a digital landscape that often feels too cold."
+                            <p className="text-[#000000] text-lg md:text-xl text-justify font-medium leading-relaxed tracking-tight" style={{ fontFamily: "'NeueMontreal', sans-serif" }}>
+                                "Archaelix Tech Ventures was not born in a boardroom, a conference hall, or through long corporate discussions. It was born in a hospital bed out of pain, reflection, and an unshakable determination to build something meaningful.."
                             </p>
 
                             <div className="flex items-center gap-6">
                                 <div className="flex flex-col">
-                                    <span className="text-white text-2xl md:text-3xl font-bold uppercase leading-none tracking-tight" style={{ fontFamily: "'FoundersGrotesk', sans-serif" }}>Vikashuvi</span>
-                                    <span className="text-white/50 text-[10px] uppercase font-bold tracking-[0.3em] mt-3">Visionary & Founder</span>
+                                    <span className="text-[#df1612] text-2xl md:text-3xl font-bold uppercase leading-none tracking-tight" style={{ fontFamily: "'FoundersGrotesk', sans-serif" }}>Tharun  Ravichandran</span>
+                                    <span className="text-[#df1612]/50 text-[10px] uppercase font-bold tracking-[0.3em] mt-3">Visionary & Founder</span>
                                 </div>
                             </div>
                         </div>
@@ -158,7 +156,7 @@ const CEONote = () => {
                         <div className="mt-8">
                             <RoundButton
                                 title="Read Full Story"
-                                href="/about"
+                                href="/ceo"
                                 variant="darkWhite"
                             />
                         </div>

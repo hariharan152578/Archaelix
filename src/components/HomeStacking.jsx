@@ -5,6 +5,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollFloat from './ScrollFloat';
 import CircularButton from './CircularButton';
+import pic1 from '../assets/stackasset/1.png';
+import pic2 from '../assets/stackasset/2.png';
+import pic3 from '../assets/stackasset/3.png';
 
 // Register ScrollTrigger
 if (typeof window !== 'undefined') {
@@ -48,7 +51,7 @@ const HomeStacking = () => {
             id: 1,
             heading: 'Business Consultation',
             description: 'We provide strategic guidance and expert advice to help your business achieve its full potential and navigate complex challenges.',
-            img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2670&auto=format&fit=crop',
+            img: pic1,
             bgColor: 'linear-gradient(135deg, #df1612 0%, #b7120e 100%)',
             mainClass: 'main-part-1',
             textClass: 'text-container-1',
@@ -59,7 +62,7 @@ const HomeStacking = () => {
             id: 2,
             heading: 'IT Services',
             description: 'Our technical experts deliver robust IT solutions and infrastructure that power your digital transformation and operational excellence.',
-            img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2564&auto=format&fit=crop',
+            img: pic2,
             bgColor: 'linear-gradient(135deg, #b7120e 0%, #b52914 100%)',
             mainClass: 'main-part-2',
             textClass: 'text-container-2',
@@ -70,7 +73,7 @@ const HomeStacking = () => {
             id: 3,
             heading: 'Digital Marketing',
             description: 'We craft data-driven digital strategies that align with your business goals and drive measurable results through multi-channel excellence.',
-            img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
+            img: pic3,
             bgColor: 'linear-gradient(135deg, #f2423e 0%, #df1612 50%, #b7120e 100%)',
             mainClass: 'main-part-3',
             textClass: 'text-container-3',
@@ -119,7 +122,7 @@ const HomeStacking = () => {
                                 </ScrollFloat>
 
                                 {/* Image with button overlay */}
-                                <div className="w-full max-w-5xl mt-8">
+                                <div className="w-full max-w-5xl">
                                     <div className="relative group">
                                         {/* Glowing border effect */}
                                         <div
@@ -127,13 +130,14 @@ const HomeStacking = () => {
                                             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%)' }}
                                         />
                                         <img
-                                            src={section.img}
+                                            src={typeof section.img === 'string' ? section.img : section.img.src}
                                             alt={section.heading}
-                                            className="relative w-full h-[300px] md:h-[400px] lg:h-[450px] object-cover rounded-2xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
+                                            className="relative w-full h-[300px] md:h-[400px] lg:h-[600px] object-cover rounded-2xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
                                             style={{
                                                 boxShadow: '0 25px 60px -12px rgba(0, 0, 0, 0.4)',
                                             }}
                                         />
+
                                         {/* Subtle overlay gradient */}
                                         <div
                                             className="absolute inset-0 rounded-2xl opacity-20"

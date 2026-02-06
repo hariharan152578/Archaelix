@@ -12,7 +12,6 @@ import CEONote from "../components/CEONote";
 import Ready from "../components/Ready/Ready";
 import AboutSnippet from "../components/AboutSnippet";
 
-
 export default function Home() {
   const [splashComplete, setSplashComplete] = useState(false);
 
@@ -43,6 +42,8 @@ export default function Home() {
         { label: "Digital Marketing", link: "/services/digital-marketing" },
       ]
     },
+   //  {label: "Ceo", link: "/ceo" },
+        {label:"Client" ,link:"/client"},
     { label: "Careers", link: "/careers" },
     { label: "Contact", link: "/contact" },
   ];
@@ -80,11 +81,11 @@ export default function Home() {
         {/* Stacking Section */}
         <HomeStacking />
 
+        <Ready />
         {/* CEO Note Section */}
         <CEONote />
 
         {/* Ready Section */}
-        <Ready />
 
         {/* Footer Section */}
         <Footer />

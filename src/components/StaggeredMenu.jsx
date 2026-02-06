@@ -330,7 +330,7 @@ const StaggeredMenu = ({
 
   return (
     <div
-      className={`sm-scope z-40 top-0 left-0 w-full h-full pointer-events-none fixed overflow-visible`}>
+      className={`sm-scope z-40 top-0 left-0 w-full h-full  pointer-events-none fixed overflow-visible`}>
       <div
         className={(className ? className + ' ' : '') + 'staggered-menu-wrapper relative w-full h-full overflow-visible'}
         style={accentColor ? { ['--sm-accent']: accentColor } : undefined}
@@ -345,15 +345,16 @@ const StaggeredMenu = ({
             return raw.map((c, i) => (
               <div
                 key={i}
-                className="sm-prelayer absolute top-0 right-0 h-full w-full translate-x-0"
+                className="sm-prelayer absolute  top-0 right-0 h-full w-full translate-x-0"
                 style={{ background: c }} />
             ));
           })()}
         </div>
 
-        <header
-          className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between py-6 md:py-8 px-[5vw] md:px-12 lg:px-20 bg-transparent pointer-events-none z-20 overflow-visible"
-          aria-label="Main navigation header">
+<header
+  className="staggered-menu-header fixed top-0 left-0 w-full flex items-center justify-between py-2 md:py-3 px-[4vw] md:px-8 bg-amber-800  pointer-events-none z-50 overflow-visible border-b border-black/[0.03]"
+  aria-label="Main navigation header"
+>
           <div
             className="sm-logo flex items-center select-none pointer-events-auto"
             aria-label="Logo">
@@ -380,21 +381,19 @@ const StaggeredMenu = ({
             onClick={toggleMenu}
             type="button">
 
-            {/* DESKTOP TEXT - Hidden on mobile */}
             <span
               ref={textWrapRef}
-              className="sm-toggle-textWrap relative hidden md:inline-block h-[40px] overflow-hidden whitespace-nowrap min-w-[50px] mr-2"
+              className="sm-toggle-textWrap relative hidden md:inline-block h-[40px] overflow-hidden whitespace-nowrap min-w-[50px] mr-2 "
               aria-hidden="true">
               <span
                 ref={textInnerRef}
                 className="sm-toggle-textInner flex flex-col justify-start">
-                {/* EXPLICIT HEIGHT BLOCKS */}
+               
                 <span className="block h-[40px] flex items-center text-sm font-semibold tracking-widest uppercase">Menu</span>
                 <span className="block h-[40px] flex items-center text-sm font-semibold tracking-widest uppercase">Close</span>
               </span>
             </span>
 
-            {/* MOBILE HAMBURGER ICON - Visible only on mobile */}
             <span className="md:hidden relative w-[22px] h-[16px] block" aria-hidden="true">
               <span
                 className="absolute left-0 w-full h-[2px] bg-current rounded-[2px] transition-all duration-300"
@@ -418,7 +417,6 @@ const StaggeredMenu = ({
               />
             </span>
 
-            {/* DESKTOP PLUS ICON - Hidden on mobile, only show on md+ */}
             <span
               ref={iconRef}
               className="sm-icon relative hidden md:inline-flex w-[14px] h-[14px] shrink-0 items-center justify-center"
@@ -517,7 +515,7 @@ const StaggeredMenu = ({
               ) : null}
             </ul>
 
-            {displaySocials && socialItems && socialItems.length > 0 && (
+            {/* {displaySocials && socialItems && socialItems.length > 0 && (
               <div
                 className="sm-socials mt-auto pt-8 flex flex-col gap-3"
                 aria-label="Social links">
@@ -539,7 +537,7 @@ const StaggeredMenu = ({
                   ))}
                 </ul>
               </div>
-            )}
+            )} */}
           </div>
         </aside>
       </div>

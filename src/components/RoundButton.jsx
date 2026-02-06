@@ -20,6 +20,13 @@ const variants = {
         iconColor: "text-[#df1612]",
         hoverIconColor: "group-hover:text-[#0F172A]"
     },
+  primary1: {
+    className: "bg-white text-black hover:text-white hover:bg-[#0F172A]", // Added hover text change // Standardized to a utility class
+    circleBg: "bg-[#df1612]",
+    hoverCircleBg: "group-hover:bg-white",
+    iconColor: "text-white",
+    hoverIconColor: "group-hover:text-[#0F172A]"
+  },
     dark: {
         className: "bg-[#0F172A] text-white",
         bgcolor: "#df1612",
