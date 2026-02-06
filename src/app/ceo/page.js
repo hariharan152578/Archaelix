@@ -118,7 +118,7 @@ const CEONote = () => {
                                 <div ref={imageRevealRef} className="relative w-full max-w-[450px] aspect-[3/4] overflow-hidden rounded-[2.5rem] shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] bg-white p-3">
                                     <div className="w-full h-full rounded-[2rem] overflow-hidden">
                                         <img 
-                                            src="https://res.cloudinary.com/djq8chnko/image/upload/v1770196322/1770195683491_bcn34m.png" 
+                                            src="https://res.cloudinary.com/dlb52kdyx/image/upload/v1770377344/IMG_1584.JPG_glzool.jpg" 
                                             alt="CEO" 
                                             className="w-full h-full object-cover" 
                                         />
