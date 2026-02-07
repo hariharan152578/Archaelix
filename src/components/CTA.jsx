@@ -20,14 +20,14 @@ const CTA = () => {
   const modalRef = useRef();
 
   const students = [
-    { id: 1, name: 'Team 1', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770287035/1_pt8sun.png' },
-    { id: 2, name: 'Team 2', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770287226/8_zvkvce.png' },
-    { id: 3, name: 'Team 3', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770287280/7_j4jjf5.png' },
-    { id: 4, name: 'Team 4', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770287338/4_ksvp98.png' },
-    { id: 5, name: 'Team 5', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770286213/5_fwvprn.png' },
-    { id: 6, name: 'Team 6', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770286204/6_zv2wzh.png' },
-    { id: 7, name: 'Team 7', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770286162/7_j4jjf5.png' },
-    { id: 8, name: 'Team 8', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770286169/8_zvkvce.png' },
+    { id: 1, name: 'Team 1', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770287338/4_ksvp98.png' },
+    { id: 2, name: 'Team 2', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770287280/7_j4jjf5.png' },
+    { id: 3, name: 'Team 3', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770287226/8_zvkvce.png' },
+    { id: 4, name: 'Team 4', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770287035/1_pt8sun.png' },
+    { id: 5, name: 'Team 5', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770462345/3_rpkfhm.png' },
+    { id: 6, name: 'Team 6', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770462361/2_kbisec.png' },
+    { id: 7, name: 'Team 7', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770462374/6_zv2wzh.png' },
+    { id: 8, name: 'Team 8', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770462395/5_fwvprn.png' },
   ];
 
   const presetPositions = [
