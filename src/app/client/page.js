@@ -41,10 +41,10 @@ const ClientSection = () => {
             color: "#df1612"
         },
         {
-            name: "Illavarsi Foods",
+            name: "Elavarasi Foods",
             tag: "Ongoing Brand Transformation",
             shortDesc: "Comprehensive rebranding and digital evolution for a leading Kerala brand.",
-            fullDesc: "Illavarsi Foods is currently partnering with us for a comprehensive rebranding. Over several months, we have been engaged in brand redesign, e-commerce development, and strategic marketing. Our work involves in-depth research to determine optimal locations for new retail outlets and crafting targeted offline/online marketing strategies. We are focused on the full rebranding of their visual identity to ensure a seamless and impactful transformation.",
+            fullDesc: "Elavarasi Foods is currently partnering with us for a comprehensive rebranding. Over several months, we have been engaged in brand redesign, e-commerce development, and strategic marketing. Our work involves in-depth research to determine optimal locations for new retail outlets and crafting targeted offline/online marketing strategies. We are focused on the full rebranding of their visual identity to ensure a seamless and impactful transformation.",
             color: "#0F172A"
         },
         {
@@ -117,7 +117,7 @@ const ClientSection = () => {
                                 <span className="h-[2px] w-12 bg-[#df1612]"></span>
                                 <h3 className="text-xs font-bold uppercase tracking-[0.5em] text-[#0F172A]">Partners</h3>
                             </div>
-                            <h2 className="text-6xl md:text-7xl lg:text-8xl font-bold text-[#0F172A] leading-[0.85] uppercase italic mb-8" style={{ fontFamily: "var(--font-founders, sans-serif)" }}>
+                            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-[#0F172A] leading-[0.85] uppercase italic mb-8" style={{ fontFamily: "var(--font-founders, sans-serif)" }}>
                                 Strategic <br /> Partners.
                             </h2>
                             <p className="text-xl text-[#0F172A]/70 leading-relaxed mb-10 max-w-sm">
