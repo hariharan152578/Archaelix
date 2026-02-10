@@ -158,7 +158,7 @@ const ClientSection = () => {
                                                 ${index % 2 !== 0 ? 'bg-white text-[#0F172A]' : 'bg-[#0F172A] text-white'}`}>
                                                 <div className="overflow-y-auto custom-scrollbar pr-2">
                                                     <h4 className="text-2xl font-bold uppercase mb-4 italic" style={{ fontFamily: "var(--font-founders, sans-serif)" }}>Project Details</h4>
-                                                    <p className="text-sm leading-relaxed opacity-90">{partner.fullDesc}</p>
+                                                    <p className="text-sm leading-relaxed text-justify opacity-90">{partner.fullDesc}</p>
                                                 </div>
                                                 <button onClick={() => toggleFlip(index)} className="mt-6 text-xs font-bold uppercase tracking-[0.2em] underline decoration-[#df1612] decoration-2 underline-offset-4">
                                                     Back to Overview
