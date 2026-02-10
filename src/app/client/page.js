@@ -15,50 +15,49 @@ const ClientSection = () => {
     const [flippedCards, setFlippedCards] = useState({});
     const containerRef = useRef(null);
 
-     const menuItems = [
-    { label: "Home", link: "/" },
-    { label: "About", link: "/about" },
-    {
-      label: "Services",
-      subItems: [
-        { label: "Business Consultation", link: "/services/business-consulting" },
-        { label: "IT Services", link: "/services/it-services" },
-        { label: "Digital Marketing", link: "/services/digital-marketing" },
-      ]
-    },
-   //  {label: "Ceo", link: "/ceo" },
-        {label:"Client" ,link:"/client"},
-    { label: "Careers", link: "/careers" },
-    { label: "Contact", link: "/contact" },
-  ];
+    const menuItems = [
+        { label: "Home", link: "/" },
+        { label: "About", link: "/about" },
+        {
+            label: "Services",
+            subItems: [
+                { label: "Business Consultation", link: "/services/business-consulting" },
+                { label: "IT Services", link: "/services/it-services" },
+                { label: "Digital Marketing", link: "/services/digital-marketing" },
+            ]
+        },
+        { label: "Client", link: "/client" },
+        { label: "Careers", link: "/careers" },
+        { label: "Contact", link: "/contact" },
+    ];
 
     const partners = [
         {
             name: "Velora",
             tag: "End-to-End Brand Development",
             shortDesc: "A research-driven approach to building a consumer brand from the ground up.",
-            fullDesc: "Velora is an emerging consumer brand with a strong long-term vision. Over the past 6–8 months, Archaelix has been closely working with the Velora team to build the brand from the ground up through a structured, research-driven approach. Our engagement began with in-depth R&D and documentation, focusing on defining the brand’s identity, positioning, and long-term roadmap. We are handling visual design systems, product concepts, and digital experience strategy. Every aspect is being designed to scale both aesthetically and operationally.",
+            fullDesc: "Velora is an emerging consumer brand with a strong long-term vision. Over the past 6–8 months, Archaelix has been closely working with the Velora team to build the brand from the ground up through a structured, research-driven approach. Our engagement began with in-depth R&D and documentation, focusing on defining the brand’s identity, positioning, and long-term roadmap. We are handling visual design systems, product concepts, and digital experience strategy.",
             color: "#df1612"
         },
         {
             name: "Elavarasi Foods",
             tag: "Ongoing Brand Transformation",
             shortDesc: "Comprehensive rebranding and digital evolution for a leading Kerala brand.",
-            fullDesc: "Elavarasi Foods is currently partnering with us for a comprehensive rebranding. Over several months, we have been engaged in brand redesign, e-commerce development, and strategic marketing. Our work involves in-depth research to determine optimal locations for new retail outlets and crafting targeted offline/online marketing strategies. We are focused on the full rebranding of their visual identity to ensure a seamless and impactful transformation.",
+            fullDesc: "Elavarasi Foods is currently partnering with us for a comprehensive rebranding. Over several months, we have been engaged in brand redesign, e-commerce development, and strategic marketing. Our work involves in-depth research to determine optimal locations for new retail outlets and crafting targeted offline/online marketing strategies.",
             color: "#0F172A"
         },
         {
             name: "LAP",
             tag: "Revolutionizing Technology",
             shortDesc: "Bringing a new evolution of technology to students across various educational fields.",
-            fullDesc: "LAP is an innovative software project designed to enhance the learning experience through cutting-edge technology. Whether for arts, engineering, medical colleges, or schools, LAP aims to empower students with seamless access to educational tools. Our team is dedicated to developing a robust, user-friendly platform that caters to diverse needs, representing a significant advancement in educational technology.",
+            fullDesc: "LAP is an innovative software project designed to enhance the learning experience through cutting-edge technology. Whether for arts, engineering, medical colleges, or schools, LAP aims to empower students with seamless access to educational tools. Our team is dedicated to developing a robust, user-friendly platform that caters to diverse needs.",
             color: "#df1612"
         },
         {
             name: "Aurli Rue",
             tag: "Women's Accessories",
             shortDesc: "Comprehensive end-to-end brand development for elegant jewelry and accessories.",
-            fullDesc: "Aurli Rue specializes in elegant jewelry. Over the past five months, we have collaborated closely to deliver thorough R&D, brand redesign, and a robust digital presence. We are focused on creating a cohesive brand identity and an intuitive e-commerce platform that reflects the brand’s essence, ensuring Aurli Rue achieves a distinctive and impactful market presence.",
+            fullDesc: "Aurli Rue specializes in elegant jewelry. Over the past five months, we have collaborated closely to deliver thorough R&D, brand redesign, and a robust digital presence. We are focused on creating a cohesive brand identity and an intuitive e-commerce platform that reflects the brand’s essence.",
             color: "#0F172A"
         }
     ];
@@ -127,40 +126,41 @@ const ClientSection = () => {
                         </div>
 
                         <div className="lg:w-3/5 w-full">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
+                            {/* Fixed grid: added row-gap for mobile to prevent overlap */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 gap-x-6 lg:gap-10">
                                 {partners.map((partner, index) => (
                                     <div 
                                         key={index} 
-                                        className={`client-card-wrapper perspective-1000 min-h-[520px] ${index % 2 !== 0 ? 'md:translate-y-24' : ''}`}
+                                        className={`client-card-wrapper perspective-1000 h-[500px] md:h-[550px] lg:h-[600px] w-full ${index % 2 !== 0 ? 'md:translate-y-24' : ''}`}
                                     >
                                         <div className={`card-inner-${index} relative w-full h-full transition-all duration-500 preserve-3d`}>
                                             
                                             {/* FRONT FACE */}
-                                            <div className={`absolute inset-0 backface-hidden p-10 rounded-[3rem] flex flex-col justify-between shadow-xl
+                                            <div className={`absolute inset-0 backface-hidden p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] flex flex-col justify-between shadow-xl
                                                 ${index % 2 !== 0 ? 'bg-[#0F172A] text-white' : 'bg-white text-[#0F172A]'}`}>
                                                 <div>
-                                                    <span className={`text-[9px] uppercase font-bold tracking-widest px-4 py-2 rounded-full border ${index % 2 !== 0 ? 'border-white/20' : 'border-[#0F172A]/10'}`}>
+                                                    <span className={`text-[9px] inline-block uppercase font-bold tracking-widest px-4 py-2 rounded-full border ${index % 2 !== 0 ? 'border-white/20' : 'border-[#0F172A]/10'}`}>
                                                         {partner.tag}
                                                     </span>
-                                                    <h4 className="text-4xl font-bold italic mt-10 mb-6 uppercase" style={{ fontFamily: "var(--font-founders, sans-serif)" }}>{partner.name}</h4>
-                                                    <p className="text-lg opacity-70">{partner.shortDesc}</p>
+                                                    <h4 className="text-3xl md:text-4xl font-bold italic mt-8 md:mt-10 mb-6 uppercase" style={{ fontFamily: "var(--font-founders, sans-serif)" }}>{partner.name}</h4>
+                                                    <p className="text-base md:text-lg opacity-70 leading-snug">{partner.shortDesc}</p>
                                                 </div>
-                                                <button onClick={() => toggleFlip(index)} className="group flex justify-between items-end w-full outline-none">
+                                                <button onClick={() => toggleFlip(index)} className="group flex justify-between items-end w-full outline-none mt-4">
                                                     <span className="text-xs font-bold uppercase tracking-widest opacity-40">View Case Study</span>
-                                                    <div className={`w-14 h-14 rounded-full border flex items-center justify-center transition-all group-hover:bg-[#df1612] group-hover:border-[#df1612] ${index % 2 !== 0 ? 'border-white/20' : 'border-[#0F172A]/20'}`}>
+                                                    <div className={`w-12 h-12 md:w-14 md:h-14 rounded-full border flex items-center justify-center transition-all group-hover:bg-[#df1612] group-hover:border-[#df1612] ${index % 2 !== 0 ? 'border-white/20' : 'border-[#0F172A]/20'}`}>
                                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                                                     </div>
                                                 </button>
                                             </div>
 
                                             {/* BACK FACE */}
-                                            <div className={`absolute inset-0 backface-hidden p-10 rounded-[3rem] flex flex-col justify-between shadow-xl rotate-y-180
+                                            <div className={`absolute inset-0 backface-hidden p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] flex flex-col justify-between shadow-xl rotate-y-180
                                                 ${index % 2 !== 0 ? 'bg-white text-[#0F172A]' : 'bg-[#0F172A] text-white'}`}>
                                                 <div className="overflow-y-auto custom-scrollbar pr-2">
                                                     <h4 className="text-2xl font-bold uppercase mb-4 italic" style={{ fontFamily: "var(--font-founders, sans-serif)" }}>Project Details</h4>
-                                                    <p className="text-sm leading-relaxed text-justify opacity-90">{partner.fullDesc}</p>
+                                                    <p className="text-sm md:text-base leading-relaxed text-justify opacity-90">{partner.fullDesc}</p>
                                                 </div>
-                                                <button onClick={() => toggleFlip(index)} className="mt-6 text-xs font-bold uppercase tracking-[0.2em] underline decoration-[#df1612] decoration-2 underline-offset-4">
+                                                <button onClick={() => toggleFlip(index)} className="mt-6 text-xs font-bold uppercase tracking-[0.2em] underline decoration-[#df1612] decoration-2 underline-offset-4 self-start">
                                                     Back to Overview
                                                 </button>
                                             </div>
@@ -170,9 +170,9 @@ const ClientSection = () => {
                                 ))}
                             </div>
 
-                            <div className="mt-48 p-16 bg-[#df1612] rounded-[3rem] text-white flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden group">
-                                <div className="relative z-10">
-                                    <h3 className="text-5xl font-bold italic mb-4 uppercase" style={{ fontFamily: "var(--font-founders, sans-serif)" }}>Ready to scale?</h3>
+                            <div className="mt-32 md:mt-48 p-8 md:p-16 bg-[#df1612] rounded-[2.5rem] md:rounded-[3rem] text-white flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden group">
+                                <div className="relative z-10 text-center md:text-left">
+                                    <h3 className="text-4xl md:text-5xl font-bold italic mb-4 uppercase" style={{ fontFamily: "var(--font-founders, sans-serif)" }}>Ready to scale?</h3>
                                     <p className="text-white/80 text-lg">Let's build your brand's digital legacy together.</p>
                                 </div>
                                 <div className="relative z-10">
@@ -189,7 +189,7 @@ const ClientSection = () => {
             <style jsx global>{`
                 .perspective-1000 { perspective: 1000px; }
                 .preserve-3d { transform-style: preserve-3d; }
-                .backface-hidden { backface-visibility: hidden; }
+                .backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
                 .rotate-y-180 { transform: rotateY(180deg); }
                 .custom-scrollbar::-webkit-scrollbar { width: 4px; }
                 .custom-scrollbar::-webkit-scrollbar-thumb { background: #df1612; border-radius: 10px; }
