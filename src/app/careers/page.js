@@ -395,6 +395,13 @@ export default function CareersPage() {
                                 placeholder="Email Address" 
                                 className="w-full bg-gray-50 border-none p-4 rounded-xl outline-[#df1612]" 
                             />
+                             <input 
+                                required 
+                                name="phone" 
+                                type="tel" 
+                                placeholder="Phone Number" 
+                                className="w-full bg-gray-50 border-none p-4 rounded-xl outline-[#df1612]" 
+                            />
                         </div>
                         
                         <div>

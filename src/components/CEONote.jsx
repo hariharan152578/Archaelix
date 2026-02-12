@@ -135,7 +135,7 @@ const CEONote = () => {
                             className="text-[10vw] lg:text-[5vw] font-bold text-[#df1612] leading-[0.85] uppercase italic"
                             style={{ fontFamily: "'FoundersGrotesk', sans-serif" }}
                         >
-                            CEO's Story - Archaelix Ventures
+                            CEO's Story <br /> - Archaelix
                         </h2>
 
 

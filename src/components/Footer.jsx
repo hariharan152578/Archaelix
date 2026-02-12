@@ -3,8 +3,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Users } from "lucide-react"; // Added Users icon
+import { ArrowRight, Users } from "lucide-react";
 import RoundButton from './RoundButton';
+import logo from '../assets/logo/NOVI.png';
+import logo1 from '../assets/logo/NOVI1.png';
 
 // Register ScrollTrigger
 if (typeof window !== 'undefined') {
@@ -16,7 +18,6 @@ const Footer = () => {
     const bigTextRef = useRef(null);
     const lettersRef = useRef([]);
     const hasAnimatedRef = useRef(false);
-    const communityRef = useRef(null); // Ref for new community element
     const [mounted, setMounted] = useState(false);
 
     const brandName = "Archaelix";
@@ -26,7 +27,7 @@ const Footer = () => {
         if (!bigTextRef.current || lettersRef.current.length === 0) return;
 
         const ctx = gsap.context(() => {
-            // Existing Big Text Animation
+            // Big Text Animation Initial State
             gsap.set(lettersRef.current, {
                 opacity: 0,
                 y: 150,
@@ -65,24 +66,8 @@ const Footer = () => {
                                 });
                             }
                         });
-
-                        gsap.to(lettersRef.current, {
-                            textShadow: "0 0 40px rgba(255,255,255,0.8), 0 0 80px rgba(255,255,255,0.4)",
-                            duration: 0.5,
-                            stagger: { each: 0.05, repeat: 1, yoyo: true },
-                            delay: 0.8,
-                        });
                     }
                 },
-            });
-
-            // Subtle floating animation for the Community Badge
-            gsap.to(communityRef.current, {
-                y: -10,
-                duration: 2,
-                repeat: -1,
-                yoyo: true,
-                ease: "power1.inOut"
             });
         }, footerRef);
 
@@ -119,74 +104,84 @@ const Footer = () => {
     };
 
     return (
-        <footer ref={footerRef} className="w-full bg-[#df1612] text-white pt-32 pb-12 px-8 md:px-16 overflow-hidden">
-            <div className="w-full">
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-32">
-                    <div className="col-span-2 lg:col-span-3">
-                        <p className="text-white/80 max-w-md text-lg leading-relaxed font-sans mb-8">
+        <footer ref={footerRef} className="w-full bg-[#df1612] text-white pt-20 pb-12 px-8 md:px-16 overflow-hidden">
+            <div className="w-full flex flex-col gap-24">
+                
+                {/* TOP SECTION: Split Left and Right */}
+                <div className="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24">
+                    
+                    {/* LEFT COLUMN: Branding & Intro */}
+                    <div className="flex-1 flex flex-col items-start gap-5 ">
+                        {/* Enlarged Logo Container */}
+                       <div className="flex items-center justify-center">
+  <div className="flex items-center gap-8 px-8 py-6 bg-white/70 backdrop-blur-xl rounded-2xl shadow-xl border border-black/5">
+
+    <img
+      src={logo.src}
+      alt="Archaelix Logo"
+      className="h-20 md:h-32 w-auto object-contain scale-150 transition-transform duration-300"
+    />
+
+    <div className="h-16 md:h-24 w-px bg-gradient-to-b from-transparent via-black/40 to-transparent"></div>
+
+    <img
+      src={logo1.src}
+      alt="Partner Logo"
+      className="h-20 md:h-32 w-auto object-contain transition-transform duration-300 hover:scale-105"
+    />
+
+  </div>
+</div>
+
+                        
+                        <p className="text-white/80 max-w-md text-xl leading-relaxed font-sans">
                             We bridge the gap between imagination and reality, crafting digital experiences that resonate and inspire.
                         </p>
 
-                        {/* --- NEW Community Link Component ---
-                        <div className="mb-12 group">
-                            <a 
-                                href="/community" 
-                                ref={communityRef}
-                                className="inline-flex items-center gap-4 bg-white/5 hover:bg-white/10 border border-white/20 backdrop-blur-sm px-6 py-3 rounded-full transition-all duration-300 group-hover:border-white/40"
-                            >
-                                <div className="bg-white text-[#df1612] p-2 rounded-full group-hover:rotate-12 transition-transform duration-500">
-                                    <Users size={18} />
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="text-[10px] uppercase tracking-widest font-bold text-white/50">Join the Circle</span>
-                                    <span className="text-sm font-medium flex items-center gap-2">
-                                        Archaelix Community <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                                    </span>
-                                </div>
-                            </a>
-                        </div> */}
-                        {/* ------------------------------------ */}
-
-                        <div className="group relative inline-block">
+                        <div className="group relative">
                             <RoundButton
                                 href="/community"
-                                title="Archaelix Community"
+                                title="Join Community"
                                 variant="primary1"
                             />
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-6">
-                        <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 font-sans">Services</h4>
-                        <ul className="flex flex-col gap-4 font-sans text-base font-medium">
-                            <li><a href="/services/business-consulting" className="hover:text-white/60 transition-colors">Business Consultation</a></li>
-                            <li><a href="/services/it-services" className="hover:text-white/60 transition-colors">IT Services</a></li>
-                            <li><a href="/services/digital-marketing" className="hover:text-white/60 transition-colors">Digital Marketing</a></li>
-                        </ul>
-                    </div>
+                    {/* RIGHT COLUMN: Navigation Links */}
+                    <div className="flex-[1.2] grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12 lg:pt-6">
+                        <div className="flex flex-col gap-6">
+                            <h4 className="text-[10px] md:text-[25px] font-bold uppercase tracking-[0.3em] text-white/40 font-sans">Services</h4>
+                            <ul className="flex flex-col gap-4 font-sans text-sm font-medium">
+                                <li><a href="/services/business-consulting" className="hover:text-white/60 transition-colors">Business Consultation</a></li>
+                                <li><a href="/services/it-services" className="hover:text-white/60 transition-colors">IT Services</a></li>
+                                <li><a href="/services/digital-marketing" className="hover:text-white/60 transition-colors">Digital Marketing</a></li>
+                            </ul>
+                        </div>
 
-                    <div className="flex flex-col gap-6">
-                        <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 font-sans">Company</h4>
-                        <ul className="flex flex-col gap-4 font-sans text-base font-medium">
-                            <li><a href="/" className="hover:text-white/60 transition-colors">Home</a></li>
-                            <li><a href="/about" className="hover:text-white/60 transition-colors">About</a></li>
-                            <li><a href="/contact" className="hover:text-white/60 transition-colors">Contact</a></li>
-                            <li><a href="/careers" className="hover:text-white/60 transition-colors">Careers</a></li>
-                            <li><a href="/client" className="hover:text-white/60 transition-colors">Clients</a></li>
-                        </ul>
-                    </div>
+                        <div className="flex flex-col gap-6">
+                            <h4 className="text-[10px] md:text-[25px] font-bold uppercase tracking-[0.3em] text-white/40 font-sans">Company</h4>
+                            <ul className="flex flex-col gap-4 font-sans text-sm font-medium">
+                                <li><a href="/" className="hover:text-white/60 transition-colors">Home</a></li>
+                                <li><a href="/about" className="hover:text-white/60 transition-colors">About</a></li>
+                                <li><a href="/careers" className="hover:text-white/60 transition-colors">Careers</a></li>
+                                <li><a href="/contact" className="hover:text-white/60 transition-colors">Contact</a></li>
+                            </ul>
+                        </div>
 
-                    <div className="flex flex-col gap-6">
-                        <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 font-sans">Socials</h4>
-                        <ul className="flex flex-col gap-4 font-sans text-base font-medium">
-                            <li><a href="#" className="hover:text-white/60 transition-colors">LinkedIn</a></li>
-                            <li><a href="#" className="hover:text-white/60 transition-colors">Instagram</a></li>
-                        </ul>
+                        <div className="flex flex-col gap-6">
+                            <h4 className="text-[10px] md:text-[25px] font-bold uppercase tracking-[0.3em] text-white/40 font-sans">Socials</h4>
+                            <ul className="flex flex-col gap-4 font-sans text-sm font-medium">
+                                <li><a href="#" className="hover:text-white/60 transition-colors">LinkedIn</a></li>
+                                <li><a href="#" className="hover:text-white/60 transition-colors">Instagram</a></li>
+                                <li><a href="#" className="hover:text-white/60 transition-colors">X / Twitter</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <div ref={bigTextRef} className="relative -mb-16 md:-mb-24 lg:-mb-40">
-                    <h2 className="text-[22vw] font-bold leading-[0.7] font-heading uppercase select-none flex" style={{ perspective: "1000px" }}>
+                {/* MIDDLE SECTION: Big Animated Text */}
+                <div ref={bigTextRef} className="relative -mb-12 md:-mb-20 lg:-mb-32 flex justify-center">
+                    <h2 className="text-[23vw] font-bold leading-[0.75] font-heading uppercase select-none flex" style={{ perspective: "1000px" }}>
                         {brandName.split('').map((letter, index) => (
                             <span
                                 key={index}
@@ -202,11 +197,12 @@ const Footer = () => {
                     </h2>
                 </div>
 
-                <div className="mt-40 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-sans text-white/40">
+                {/* BOTTOM SECTION: Copyright & Legal */}
+                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-widest uppercase font-sans text-white/30">
                     <p>© 2026 Archaelix. Digital Excellence.</p>
                     <div className="flex gap-10">
-                        <a href="#" className="hover:text-white transition-colors uppercase tracking-widest text-[10px] font-bold">Privacy</a>
-                        <a href="#" className="hover:text-white transition-colors uppercase tracking-widest text-[10px] font-bold">Terms</a>
+                        <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
                     </div>
                 </div>
             </div>

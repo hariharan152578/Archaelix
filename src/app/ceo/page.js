@@ -137,7 +137,7 @@ const CEONote = () => {
                                 </div>
 
                                 <h2 className="animate-title text-[10vw] lg:text-[5vw] font-bold text-[#0F172A] leading-[0.85] uppercase italic mb-10" style={{ fontFamily: "'FoundersGrotesk', sans-serif" }}>
-                                    CEO's Story - <br /> Archaelix Ventures
+                                    CEO's Story <br /> - Archaelix
                                 </h2>
 
                                 <div className="reveal-item text-[#0F172A]/90 text-2xl md:text-3xl font-normal leading-[1.2] tracking-tight max-w-4xl" style={{ fontFamily: "'NeueMontreal', sans-serif" }}>

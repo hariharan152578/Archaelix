@@ -59,7 +59,15 @@ const ClientSection = () => {
             shortDesc: "Comprehensive end-to-end brand development for elegant jewelry and accessories.",
             fullDesc: "Aurli Rue specializes in elegant jewelry. Over the past five months, we have collaborated closely to deliver thorough R&D, brand redesign, and a robust digital presence. We are focused on creating a cohesive brand identity and an intuitive e-commerce platform that reflects the brand’s essence.",
             color: "#0F172A"
+        },
+        {
+            name: "RM Construction",
+            tag: "Construction & Infrastructure",
+            shortDesc: "End-to-end digital branding and website development for a modern construction company.",
+            fullDesc: "For RM Construction, we delivered a complete digital transformation focused on building a strong and professional online presence. Our work included brand positioning, website design, and development tailored to showcase their construction expertise, project portfolio, and service offerings. We crafted a clean, structured, and performance-optimized website that reflects their commitment to quality, durability, and precision,It generate qualified client inquiries through a seamless and user-friendly experience.",
+            color: "#1E293B"
         }
+
     ];
 
     const toggleFlip = (index) => {

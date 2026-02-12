@@ -50,7 +50,7 @@ export default function Ready() {
                             href="/contact">
                             <Rounded className="py-[6px]" backgroundColor="#df1612">
                                 <p className="z-10 px-[15px] ml-[15px] py-[6px] group-hover:text-white text-[#df1612] font-medium" style={{ fontFamily: "'NeueMontreal', sans-serif" }}>
-                                    hello@archaelix.design
+                                    info@archaelix.com
                                 </p>
                                 <div className="bg-[#df1612] group-hover:bg-white text-white p-[10px] rounded-full scale-[0.3] mr-[10px] group-hover:scale-[0.9] transition-all z-10 transform duration-[0.3s] flex items-center justify-center">
                                     <ArrowUpRight strokeWidth={1.5} size={30} className="scale-[0] group-hover:scale-[1] group-hover:text-[#df1612]" />

@@ -2,7 +2,14 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import RoundButton from './RoundButton';
-
+import img1 from "../assets/CTA/1.png";
+import img2 from "../assets/CTA/2.png";
+import img3 from "../assets/CTA/3.png";
+import img4 from "../assets/CTA/4.png";
+import img5 from "../assets/CTA/5.png";
+import img6 from "../assets/CTA/6.png";
+import img7 from "../assets/CTA/7.png";
+import img8 from "../assets/CTA/8.png";
 const CTA = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -20,14 +27,14 @@ const CTA = () => {
   const modalRef = useRef();
 
   const students = [
-    { id: 1, name: 'Team 1', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770287338/4_ksvp98.png' },
-    { id: 2, name: 'Team 2', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770287280/7_j4jjf5.png' },
-    { id: 3, name: 'Team 3', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770287226/8_zvkvce.png' },
-    { id: 4, name: 'Team 4', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770287035/1_pt8sun.png' },
-    { id: 5, name: 'Team 5', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770462345/3_rpkfhm.png' },
-    { id: 6, name: 'Team 6', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770462361/2_kbisec.png' },
-    { id: 7, name: 'Team 7', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770462374/6_zv2wzh.png' },
-    { id: 8, name: 'Team 8', image: 'https://res.cloudinary.com/dlb52kdyx/image/upload/v1770462395/5_fwvprn.png' },
+    { id: 1, name: 'Team 1', image: img1 },
+    { id: 2, name: 'Team 2', image: img2 },
+    { id: 3, name: 'Team 3', image: img3 },
+    { id: 4, name: 'Team 4', image: img4 },
+    { id: 5, name: 'Team 5', image: img5 },
+    { id: 6, name: 'Team 6', image: img6 },
+    { id: 7, name: 'Team 7', image: img7 },
+    { id: 8, name: 'Team 8', image: img8 },
   ];
 
   const presetPositions = [
@@ -157,11 +164,11 @@ const CTA = () => {
                 backfaceVisibility: 'hidden',
               }}
             >
-              <img
-                src={student.image}
-                alt={student.name}
-                className="w-full h-full object-cover"
-              />
+             <img
+  src={student.image.src || student.image} // Added .src fallback
+  alt={student.name}
+  className="w-full h-full object-cover"
+/>
             </div>
           ))}
       </div>

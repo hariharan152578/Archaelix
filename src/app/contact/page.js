@@ -12,8 +12,14 @@ import Footer from "../../components/Footer";
 const ContactPage = () => {
   const [splashComplete, setSplashComplete] = useState(false);
   const [status, setStatus] = useState("IDLE");
-  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
-  
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+    phone: ""
+  });
+
   const containerRef = useRef(null);
 
   const menuItems = [
@@ -27,7 +33,7 @@ const ContactPage = () => {
         { label: "Digital Marketing", link: "/services/digital-marketing" },
       ]
     },
-    {label:"Clients" ,link:"/clients"},
+    { label: "Clients", link: "/clients" },
     { label: "Careers", link: "/careers" },
     { label: "Contact", link: "/contact" },
   ];
@@ -70,17 +76,17 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("SENDING");
-    
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      
+
       if (response.ok) {
         setStatus("SUCCESS");
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        setFormData({ name: "", email: "", subject: "", message: "", phone: "" });
       } else {
         setStatus("ERROR");
       }
@@ -107,12 +113,12 @@ const ContactPage = () => {
         {/* --- Hero Section --- */}
         <section className="relative h-[60vh] flex items-center justify-start overflow-hidden bg-black">
           <div className="absolute inset-0 opacity-60">
-             <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-10" />
-             <img 
-                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" 
-                className="w-full h-full object-cover"
-                alt="Abstract Background"
-             />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-10" />
+            <img
+              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
+              className="w-full h-full object-cover"
+              alt="Abstract Background"
+            />
           </div>
 
           <div className="container mx-auto px-6 lg:px-24 relative z-20 hero-content">
@@ -120,16 +126,16 @@ const ContactPage = () => {
               Contacts
             </h1>
             <div className="flex items-center gap-3 text-sm font-medium">
-                <span className="text-gray-400">Home</span>
-                <ChevronRight size={14} className="text-[#df1612]" />
-                <span className="text-white">Contacts</span>
+              <span className="text-gray-400">Home</span>
+              <ChevronRight size={14} className="text-[#df1612]" />
+              <span className="text-white">Contacts</span>
             </div>
           </div>
         </section>
 
         {/* --- Main Content --- */}
         <section className="container mx-auto px-6 lg:px-24 py-24 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-          
+
           {/* Left Side: Info Grid */}
           <div className="lg:col-span-5 flex flex-col justify-center">
             <div className="reveal-item mb-10">
@@ -164,33 +170,33 @@ const ContactPage = () => {
               <div className="reveal-item">
                 <h4 className="text-lg font-bold mb-3">Email</h4>
                 <div className="text-gray-500">
-                  <p>Support@archaelix.com</p>
+                  <p>info@archaelix.com</p>
                 </div>
               </div>
 
               {/* Social Network */}
               <div className="reveal-item">
-  <h4 className="text-lg font-bold mb-3">Social network</h4>
-  <div className="flex gap-5 text-black">
-    <a 
-      href="https://www.linkedin.com/company/archaelix/" 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="hover:text-[#df1612] transition-colors"
-    >
-      <Linkedin size={18} className="cursor-pointer" />
-    </a>
-    
-    <a 
-      href="https://www.instagram.com/archaelix_tech?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="hover:text-[#df1612] transition-colors"
-    >
-      <Instagram size={18} className="cursor-pointer" />
-    </a>
-  </div>
-</div>
+                <h4 className="text-lg font-bold mb-3">Social network</h4>
+                <div className="flex gap-5 text-black">
+                  <a
+                    href="https://www.linkedin.com/company/archaelix/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#df1612] transition-colors"
+                  >
+                    <Linkedin size={18} className="cursor-pointer" />
+                  </a>
+
+                  <a
+                    href="https://www.instagram.com/archaelix_tech?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#df1612] transition-colors"
+                  >
+                    <Instagram size={18} className="cursor-pointer" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -204,39 +210,54 @@ const ContactPage = () => {
 
               <form onSubmit={handleSubmit} className="space-y-10">
                 <div className="space-y-8">
-                  <input 
-                    name="name" 
+                  <input
+                    name="name"
                     value={formData.name}
-                    placeholder="Full name" 
-                    className="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-black transition-colors text-sm placeholder:text-gray-400" 
+                    placeholder="Full name"
+                    className="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-black transition-colors text-sm placeholder:text-gray-400"
                     onChange={handleChange}
-                    required 
+                    required
                   />
-                  <input 
-                    name="email" 
-                    type="email" 
+                  <input
+                    name="email"
+                    type="email"
                     value={formData.email}
-                    placeholder="Email" 
-                    className="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-black transition-colors text-sm placeholder:text-gray-400" 
+                    placeholder="Email"
+                    className="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-black transition-colors text-sm placeholder:text-gray-400"
                     onChange={handleChange}
-                    required 
+                    required
                   />
-                  <input 
-                    name="subject" 
+                  <input
+                    name="subject"
                     value={formData.subject}
-                    placeholder="Subject" 
-                    className="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-black transition-colors text-sm placeholder:text-gray-400" 
+                    placeholder="Subject"
+                    className="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-black transition-colors text-sm placeholder:text-gray-400"
                     onChange={handleChange}
                   />
-                  <textarea 
-                    name="message" 
-                    rows="1" 
+
+                  <input
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    placeholder="Phone Number"
+                    className="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-black transition-colors text-sm placeholder:text-gray-400"
+                    onChange={handleChange}
+                    required
+                  />
+                  <textarea
+                    name="message"
+                    rows="3"
                     value={formData.message}
-                    placeholder="Message" 
-                    className="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-black transition-colors resize-none text-sm placeholder:text-gray-400" 
+                    placeholder="Message"
+                    className="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-black transition-colors resize-none text-sm placeholder:text-gray-400"
                     onChange={handleChange}
-                    required 
+                    onInput={(e) => {
+                      e.target.style.height = "auto";
+                      e.target.style.height = e.target.scrollHeight + "px";
+                    }}
+                    required
                   />
+
                 </div>
 
                 {status === "ERROR" && (
@@ -245,8 +266,8 @@ const ContactPage = () => {
                   </div>
                 )}
 
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   disabled={status === "SENDING"}
                   className="group flex items-center gap-3 bg-[#2d2d2d] text-white px-8 py-4 rounded-full font-medium transition-all hover:bg-black disabled:opacity-50"
                 >

@@ -2,7 +2,7 @@
 
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-
+import logo from '../assets/logo/NOVI.png';
 const StaggeredMenu = ({
   position = 'right',
   colors = ['#df1612', '#b7120e'], // Kept your theme colors
@@ -11,7 +11,7 @@ const StaggeredMenu = ({
   displaySocials = true,
   displayItemNumbering = true,
   className,
-  logoUrl = '/src/assets/logos/reactbits-gh-white.svg',
+  logoUrl = logo,
   logoText,
   menuButtonColor = '#0F172A',
   openMenuButtonColor = '#0F172A',
@@ -351,85 +351,98 @@ const StaggeredMenu = ({
           })()}
         </div>
 
-<header
-  className="staggered-menu-header fixed top-0 left-0 w-full flex items-center justify-between py-2 md:py-3 px-[4vw] md:px-8 bg-amber-800  pointer-events-none z-50 overflow-visible border-b border-black/[0.03]"
+    <header
+  className="staggered-menu-header fixed top-0 left-0 w-full flex items-center justify-between py-3 md:py-4 px-[4vw] md:px-8 bg-amber-800 pointer-events-none z-50 overflow-visible border-b border-black/[0.03]"
   aria-label="Main navigation header"
 >
-          <div
-            className="sm-logo flex items-center select-none pointer-events-auto"
-            aria-label="Logo">
-            {logoText ? (
-              <span className="text-2xl font-bold font-heading text-[#0F172A]"
-                style={{ fontFamily: 'FoundersGrotesk, sans-serif' }}>
-                {logoText}
-              </span>
-            ) : (
-              <img
-                src={logoUrl || ''}
-                alt="Logo"
-                className="sm-logo-img block h-8 w-auto object-contain"
-                draggable={false}
-              />
-            )}
-          </div>
+  <div
+    className="sm-logo flex items-center select-none pointer-events-auto"
+    aria-label="Logo"
+  >
+    {logoText ? (
+      <img
+        src={logoUrl.src || ''}
+        alt="Logo"
+        className="sm-logo-img block h-12 p-2 md:p-0 md:h-16 w-auto  scale-[5] md:scale-[7] object-contain"
+        draggable={false}
+      />
+    ) : (
+      <span
+        className="text-2xl font-bold font-heading text-[#0F172A]"
+        style={{ fontFamily: 'FoundersGrotesk, sans-serif' }}
+      >
+        {logoText}
+      </span>
+    )}
+  </div>
 
-          <button
-            ref={toggleBtnRef}
-            className="sm-toggle relative inline-flex items-center gap-[0.3rem] bg-transparent border-0 cursor-pointer text-[#0F172A] font-medium leading-none overflow-visible pointer-events-auto"
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            aria-expanded={open}
-            onClick={toggleMenu}
-            type="button">
+  <button
+    ref={toggleBtnRef}
+    className="sm-toggle relative inline-flex items-center gap-[0.3rem] bg-transparent border-0 cursor-pointer text-[#0F172A] font-medium leading-none overflow-visible pointer-events-auto"
+    aria-label={open ? 'Close menu' : 'Open menu'}
+    aria-expanded={open}
+    onClick={toggleMenu}
+    type="button"
+  >
+    <span
+      ref={textWrapRef}
+      className="sm-toggle-textWrap relative hidden md:inline-block h-[40px] overflow-hidden whitespace-nowrap min-w-[50px] mr-2"
+      aria-hidden="true"
+    >
+      <span
+        ref={textInnerRef}
+        className="sm-toggle-textInner flex flex-col justify-start"
+      >
+        <span className="block h-[40px] flex items-center text-sm font-semibold tracking-widest uppercase">
+          Menu
+        </span>
+        <span className="block h-[40px] flex items-center text-sm font-semibold tracking-widest uppercase">
+          Close
+        </span>
+      </span>
+    </span>
 
-            <span
-              ref={textWrapRef}
-              className="sm-toggle-textWrap relative hidden md:inline-block h-[40px] overflow-hidden whitespace-nowrap min-w-[50px] mr-2 "
-              aria-hidden="true">
-              <span
-                ref={textInnerRef}
-                className="sm-toggle-textInner flex flex-col justify-start">
-               
-                <span className="block h-[40px] flex items-center text-sm font-semibold tracking-widest uppercase">Menu</span>
-                <span className="block h-[40px] flex items-center text-sm font-semibold tracking-widest uppercase">Close</span>
-              </span>
-            </span>
+    {/* Mobile Hamburger */}
+    <span className="md:hidden relative w-[22px] h-[16px] block" aria-hidden="true">
+      <span
+        className="absolute left-0 w-full h-[2px] bg-current rounded-[2px] transition-all duration-300"
+        style={{
+          top: open ? '7px' : '0px',
+          transform: open ? 'rotate(45deg)' : 'rotate(0deg)'
+        }}
+      />
+      <span
+        className="absolute left-0 top-[7px] w-full h-[2px] bg-current rounded-[2px] transition-opacity duration-300"
+        style={{
+          opacity: open ? 0 : 1
+        }}
+      />
+      <span
+        className="absolute left-0 w-full h-[2px] bg-current rounded-[2px] transition-all duration-300"
+        style={{
+          bottom: open ? '7px' : '0px',
+          transform: open ? 'rotate(-45deg)' : 'rotate(0deg)'
+        }}
+      />
+    </span>
 
-            <span className="md:hidden relative w-[22px] h-[16px] block" aria-hidden="true">
-              <span
-                className="absolute left-0 w-full h-[2px] bg-current rounded-[2px] transition-all duration-300"
-                style={{
-                  top: open ? '7px' : '0px',
-                  transform: open ? 'rotate(45deg)' : 'rotate(0deg)'
-                }}
-              />
-              <span
-                className="absolute left-0 top-[7px] w-full h-[2px] bg-current rounded-[2px] transition-opacity duration-300"
-                style={{
-                  opacity: open ? 0 : 1
-                }}
-              />
-              <span
-                className="absolute left-0 w-full h-[2px] bg-current rounded-[2px] transition-all duration-300"
-                style={{
-                  bottom: open ? '7px' : '0px',
-                  transform: open ? 'rotate(-45deg)' : 'rotate(0deg)'
-                }}
-              />
-            </span>
-
-            <span
-              ref={iconRef}
-              className="sm-icon relative hidden md:inline-flex w-[14px] h-[14px] shrink-0 items-center justify-center"
-              aria-hidden="true">
-              <span
-                ref={plusHRef}
-                className="sm-icon-line absolute left-1/2 top-1/2 w-full h-[2px] bg-current rounded-[2px] -translate-x-1/2 -translate-y-1/2" />
-              <span
-                ref={plusVRef}
-                className="sm-icon-line sm-icon-line-v absolute left-1/2 top-1/2 w-full h-[2px] bg-current rounded-[2px] -translate-x-1/2 -translate-y-1/2" />
-            </span>
-          </button>
-        </header>
+    {/* Desktop Plus Icon */}
+    <span
+      ref={iconRef}
+      className="sm-icon relative hidden md:inline-flex w-[14px] h-[14px] shrink-0 items-center justify-center"
+      aria-hidden="true"
+    >
+      <span
+        ref={plusHRef}
+        className="sm-icon-line absolute left-1/2 top-1/2 w-full h-[2px] bg-current rounded-[2px] -translate-x-1/2 -translate-y-1/2"
+      />
+      <span
+        ref={plusVRef}
+        className="sm-icon-line sm-icon-line-v absolute left-1/2 top-1/2 w-full h-[2px] bg-current rounded-[2px] -translate-x-1/2 -translate-y-1/2"
+      />
+    </span>
+  </button>
+</header>
 
         <aside
           id="staggered-menu-panel"
