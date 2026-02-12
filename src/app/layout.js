@@ -1,4 +1,5 @@
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = {
   title: "Archaelix",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased font-sans" suppressHydrationWarning>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
