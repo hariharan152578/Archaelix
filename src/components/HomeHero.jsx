@@ -87,13 +87,13 @@ const HomeHero = ({ startAnimation }) => {
       className="relative w-full min-h-[90vh] md:min-h-screen bg-white overflow-hidden flex flex-col"
     >
       {/* BACKGROUND LAYER */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      {/* <div className="absolute inset-0 z-0 pointer-events-none">
         <Threads 
               amplitude={1.2} 
               distance={0.3} 
               color={[0.87, 0.08, 0.07]} // Matches #df1612 roughly in RGB
             />
-      </div>
+      </div> */}
 
       {/* CONTENT LAYER */}
       <div className="relative z-10 flex-1 flex flex-col justify-start md:justify-center px-[5vw] md:px-12 lg:px-20 pt-[20vh] md:pt-24 pb-6 md:pb-8">
