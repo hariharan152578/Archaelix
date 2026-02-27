@@ -3,6 +3,7 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import logo from '../assets/logo/NOVI.png';
+import Link from 'next/link';
 const StaggeredMenu = ({
   position = 'right',
   colors = ['#df1612', '#b7120e'], // Kept your theme colors
@@ -467,7 +468,7 @@ const StaggeredMenu = ({
                       onMouseLeave={() => hasSubItems && setActiveSubMenu(null)}
                     >
                       <div className="flex flex-col">
-                        <a
+                        <Link
                           className={`sm-panel-item font-heading relative text-black font-semibold text-[4rem] md:text-[5rem] cursor-pointer leading-[0.9] uppercase transition-[color] duration-150 ease-linear no-underline pr-[1.4em] group ${hasSubItems ? 'flex items-center gap-4 whitespace-nowrap' : 'inline-block'}`}
                           href={hasSubItems ? undefined : it.link}
                           aria-label={it.ariaLabel}
@@ -491,7 +492,7 @@ const StaggeredMenu = ({
                               ↓
                             </span>
                           )}
-                        </a>
+                        </Link>
 
                         {/* Sub-items with staggered animation */}
                         {hasSubItems && (
