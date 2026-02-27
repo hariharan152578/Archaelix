@@ -1,4 +1,5 @@
 "use client";
+"use client";
 
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
@@ -467,62 +468,80 @@ const StaggeredMenu = ({
                       onMouseEnter={() => hasSubItems && setActiveSubMenu(idx)}
                       onMouseLeave={() => hasSubItems && setActiveSubMenu(null)}
                     >
-                      <div className="flex flex-col">
-                        <Link
-                          className={`sm-panel-item font-heading relative text-black font-semibold text-[4rem] md:text-[5rem] cursor-pointer leading-[0.9] uppercase transition-[color] duration-150 ease-linear no-underline pr-[1.4em] group ${hasSubItems ? 'flex items-center gap-4 whitespace-nowrap' : 'inline-block'}`}
-                          href={hasSubItems ? undefined : it.link}
-                          aria-label={it.ariaLabel}
-                          data-index={idx + 1}
-                          onClick={(e) => {
-                            if (hasSubItems) {
-                              e.preventDefault();
-                              setActiveSubMenu(isExpanded ? null : idx);
-                            } else {
-                              closeMenu();
-                            }
-                          }}>
-                          <span
-                            className="sm-panel-itemLabel inline-block will-change-transform group-hover:text-[#df1612] transition-colors"
-                            style={{ fontFamily: 'FoundersGrotesk, sans-serif' }}>
-                            {it.label}
-                          </span>
+                      
+                     <div className="flex flex-col">
+  {hasSubItems ? (
+    <button
+      type="button"
+      className={`sm-panel-item font-heading relative text-black font-semibold text-[4rem] md:text-[5rem] cursor-pointer leading-[0.9] uppercase transition-[color] duration-150 ease-linear no-underline pr-[1.4em] group flex items-center gap-4 whitespace-nowrap`}
+      aria-label={it.ariaLabel}
+      data-index={idx + 1}
+      onClick={() => {
+        setActiveSubMenu(isExpanded ? null : idx);
+      }}
+    >
+      <span
+        className="sm-panel-itemLabel inline-block will-change-transform group-hover:text-[#df1612] transition-colors"
+        style={{ fontFamily: 'FoundersGrotesk, sans-serif' }}
+      >
+        {it.label}
+      </span>
 
-                          {hasSubItems && (
-                            <span className="text-[1.5rem] transition-transform duration-300">
-                              ↓
-                            </span>
-                          )}
-                        </Link>
+      <span className="text-[1.5rem] transition-transform duration-300">
+        ↓
+      </span>
+    </button>
+  ) : (
+    <Link
+      className={`sm-panel-item font-heading relative text-black font-semibold text-[4rem] md:text-[5rem] cursor-pointer leading-[0.9] uppercase transition-[color] duration-150 ease-linear no-underline pr-[1.4em] group inline-block`}
+      href={it.link}
+      aria-label={it.ariaLabel}
+      data-index={idx + 1}
+      onClick={closeMenu}
+    >
+      <span
+        className="sm-panel-itemLabel inline-block will-change-transform group-hover:text-[#df1612] transition-colors"
+        style={{ fontFamily: 'FoundersGrotesk, sans-serif' }}
+      >
+        {it.label}
+      </span>
+    </Link>
+  )}
 
-                        {/* Sub-items with staggered animation */}
-                        {hasSubItems && (
-                          <div
-                            className={`sm-submenu overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.76,0,0.24,1)] mt-4 pl-4 border-l-2 border-[#df1612]/20 ${isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
-                          >
-                            <ul className="flex flex-col gap-2 py-4">
-                              {it.subItems.map((sub, sIdx) => (
-                                <li key={sub.label + sIdx} className="overflow-hidden py-1">
-                                  <a
-                                    href={sub.link}
-                                    className="sm-submenu-item block text-[1.4rem] md:text-[2rem] font-medium text-black hover:text-[#df1612] transition-all duration-300 ease-out uppercase"
-                                    style={{
-                                      fontFamily: 'FoundersGrotesk, sans-serif',
-                                      opacity: isExpanded ? 1 : 0,
-                                      transitionDelay: `${isExpanded ? 0.05 + (sIdx * 0.05) : 0}s`,
-                                    }}
-                                    onClick={closeMenu}
-                                  >
-                                    <span className="flex items-center gap-3">
-                                      <span className="w-4 h-[1px] bg-[#df1612] transition-all duration-300 transform scale-x-0 origin-left group-hover:scale-x-100" />
-                                      {sub.label}
-                                    </span>
-                                  </a>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
+  {/* Sub-items with staggered animation */}
+  {hasSubItems && (
+    <div
+      className={`sm-submenu overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.76,0,0.24,1)] mt-4 pl-4 border-l-2 border-[#df1612]/20 ${
+        isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+      }`}
+    >
+      <ul className="flex flex-col gap-2 py-4">
+        {it.subItems.map((sub, sIdx) => (
+          <li key={sub.label + sIdx} className="overflow-hidden py-1">
+            <Link
+              href={sub.link}
+              className="sm-submenu-item block text-[1.4rem] md:text-[2rem] font-medium text-black hover:text-[#df1612] transition-all duration-300 ease-out uppercase"
+              style={{
+                fontFamily: 'FoundersGrotesk, sans-serif',
+                opacity: isExpanded ? 1 : 0,
+                transitionDelay: `${
+                  isExpanded ? 0.05 + sIdx * 0.05 : 0
+                }s`,
+              }}
+              onClick={closeMenu}
+            >
+              <span className="flex items-center gap-3">
+                <span className="w-4 h-[1px] bg-[#df1612] transition-all duration-300 transform scale-x-0 origin-left group-hover:scale-x-100" />
+                {sub.label}
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</div>
+
                     </li>
                   );
                 })
