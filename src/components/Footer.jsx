@@ -172,9 +172,9 @@ const Footer = () => {
                         <div className="flex flex-col gap-6">
                             <h4 className="text-[10px] md:text-[25px] font-bold uppercase tracking-[0.3em] text-white/40 font-sans">Socials</h4>
                             <ul className="flex flex-col gap-4 font-sans text-sm font-medium">
-                                <li><Link href="#" className="hover:text-white/60 transition-colors">LinkedIn</Link></li>
-                                <li><Link href="#" className="hover:text-white/60 transition-colors">Instagram</Link></li>
-                                <li><Link href="#" className="hover:text-white/60 transition-colors">X / Twitter</Link></li>
+                                <li><Link href="https://www.linkedin.com/company/archaelix/posts/?feedView=all" className="hover:text-white/60 transition-colors">LinkedIn</Link></li>
+                                <li><Link href="https://www.instagram.com/archaelix_tech/" className="hover:text-white/60 transition-colors">Instagram</Link></li>
+                                {/* <li><Link href="#" className="hover:text-white/60 transition-colors">X / Twitter</Link></li> */}
                             </ul>
                         </div>
                     </div>
