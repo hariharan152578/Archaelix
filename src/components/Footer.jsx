@@ -7,6 +7,7 @@ import { ArrowRight, Users } from "lucide-react";
 import RoundButton from './RoundButton';
 import logo from '../assets/logo/NOVI.png';
 import logo1 from '../assets/logo/NOVI1.png';
+import Link from 'next/link';
 
 // Register ScrollTrigger
 if (typeof window !== 'undefined') {
@@ -152,28 +153,28 @@ const Footer = () => {
                         <div className="flex flex-col gap-6">
                             <h4 className="text-[10px] md:text-[25px] font-bold uppercase tracking-[0.3em] text-white/40 font-sans">Services</h4>
                             <ul className="flex flex-col gap-4 font-sans text-sm font-medium">
-                                <li><a href="/services/business-consulting" className="hover:text-white/60 transition-colors">Business Consultation</a></li>
-                                <li><a href="/services/it-services" className="hover:text-white/60 transition-colors">IT Services</a></li>
-                                <li><a href="/services/digital-marketing" className="hover:text-white/60 transition-colors">Digital Marketing</a></li>
+                                <li><Link href="/services/business-consulting" className="hover:text-white/60 transition-colors">Business Consultation</Link></li>
+                                <li><Link href="/services/it-services" className="hover:text-white/60 transition-colors">IT Services</Link></li>
+                                <li><Link href="/services/digital-marketing" className="hover:text-white/60 transition-colors">Digital Marketing</Link></li>
                             </ul>
                         </div>
 
                         <div className="flex flex-col gap-6">
                             <h4 className="text-[10px] md:text-[25px] font-bold uppercase tracking-[0.3em] text-white/40 font-sans">Company</h4>
                             <ul className="flex flex-col gap-4 font-sans text-sm font-medium">
-                                <li><a href="/" className="hover:text-white/60 transition-colors">Home</a></li>
-                                <li><a href="/about" className="hover:text-white/60 transition-colors">About</a></li>
-                                <li><a href="/careers" className="hover:text-white/60 transition-colors">Careers</a></li>
-                                <li><a href="/contact" className="hover:text-white/60 transition-colors">Contact</a></li>
+                                <li><Link href="/" className="hover:text-white/60 transition-colors">Home</Link></li>
+                                <li><Link href="/about" className="hover:text-white/60 transition-colors">About</Link></li>
+                                <li><Link href="/careers" className="hover:text-white/60 transition-colors">Careers</Link></li>
+                                <li><Link href="/contact" className="hover:text-white/60 transition-colors">Contact</Link></li>
                             </ul>
                         </div>
 
                         <div className="flex flex-col gap-6">
                             <h4 className="text-[10px] md:text-[25px] font-bold uppercase tracking-[0.3em] text-white/40 font-sans">Socials</h4>
                             <ul className="flex flex-col gap-4 font-sans text-sm font-medium">
-                                <li><a href="#" className="hover:text-white/60 transition-colors">LinkedIn</a></li>
-                                <li><a href="#" className="hover:text-white/60 transition-colors">Instagram</a></li>
-                                <li><a href="#" className="hover:text-white/60 transition-colors">X / Twitter</a></li>
+                                <li><Link href="#" className="hover:text-white/60 transition-colors">LinkedIn</Link></li>
+                                <li><Link href="#" className="hover:text-white/60 transition-colors">Instagram</Link></li>
+                                <li><Link href="#" className="hover:text-white/60 transition-colors">X / Twitter</Link></li>
                             </ul>
                         </div>
                     </div>
@@ -201,8 +202,8 @@ const Footer = () => {
                 <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-widest uppercase font-sans text-white/30">
                     <p>© 2026 Archaelix. Digital Excellence.</p>
                     <div className="flex gap-10">
-                        <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+                        <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+                        <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
                     </div>
                 </div>
             </div>
