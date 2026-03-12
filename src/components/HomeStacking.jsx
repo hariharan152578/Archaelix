@@ -19,8 +19,7 @@ const HomeStacking = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-
-            // Section animations
+            // Section animations for the sticky stacking effect
             const createSectionAnim = (triggerSelector, prevTextSelector, nextTextSelector) => {
                 const tl = gsap.timeline({
                     scrollTrigger: {
@@ -32,13 +31,10 @@ const HomeStacking = () => {
                 });
 
                 tl.to(prevTextSelector, { opacity: 0, y: "30%" }, "s")
-                    .from(nextTextSelector, { opacity: 0, y: "-30%" }, "s");
+                  .from(nextTextSelector, { opacity: 0, y: "-30%" }, "s");
             };
 
-            // Section 2 Trigger
             createSectionAnim('.main-part-2', '.text-container-1', '.text-container-2');
-
-            // Section 3 Trigger
             createSectionAnim('.main-part-3', '.text-container-2', '.text-container-3');
 
         }, containerRef);
@@ -84,7 +80,6 @@ const HomeStacking = () => {
 
     return (
         <section ref={containerRef} className="w-full relative z-10 font-sans">
-
             <div className="relative z-10">
                 {sections.map((section, index) => (
                     <div
@@ -92,67 +87,61 @@ const HomeStacking = () => {
                         className={`${section.mainClass} min-h-screen flex items-center justify-center sticky top-0`}
                         style={{ background: section.bgColor }}
                     >
-                        <div className="container mx-auto px-6 py-16 md:py-20">
-                            {/* Center-aligned content container */}
-                            <div className={`${section.textClass} flex flex-col items-center text-center max-w-5xl mx-auto`}>
-                                { /* Big Heading */}
-                                <ScrollFloat
-                                    containerClassName="mb-10"
-                                    textClassName="text-[9vw] md:text-[8vw] lg:text-[7.5vw] text-white leading-[0.9] uppercase"
-                                    style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600, letterSpacing: '0.05em' }}
-                                    animationDuration={0.8}
-                                    stagger={0.02}
-                                    scrollStart="top 90%"
-                                    scrollEnd="bottom 10%"
-                                >
-                                    {section.heading}
-                                </ScrollFloat>
+                        <div className="container mx-auto px-6 py-16 md:py-20 w-full max-w-7xl">
+                            
+                            <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center justify-between gap-12 lg:gap-16`}>
+                                
+                                {/* Text Half */}
+                                <div className={`${section.textClass} w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left`}>
+                                    
+                                    {/* Heading STILL HAS ScrollFloat */}
+                                    <ScrollFloat
+                                        containerClassName="mb-6 lg:mb-8 w-full"
+                                        textClassName="text-5xl md:text-6xl lg:text-6xl xl:text-7xl text-white leading-[1.15] md:leading-[1.1] uppercase break-words"
+                                        style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600, letterSpacing: '0.02em' }}
+                                        animationDuration={0.8}
+                                        stagger={0.02}
+                                        scrollStart="top 95%"
+                                        scrollEnd="bottom 10%"
+                                    >
+                                        {section.heading}
+                                    </ScrollFloat>
 
-                                { /* Small Paragraph */}
-                                <ScrollFloat
-                                    containerClassName="mb-8 max-w-2xl"
-                                    textClassName="text-lg md:text-xl lg:text-2xl text-white/90 leading-relaxed"
-                                    style={{ fontFamily: "'NeueMontreal', sans-serif" }}
-                                    animationDuration={0.8}
-                                    stagger={0.01}
-                                    scrollStart="top 85%"
-                                    scrollEnd="bottom 30%"
-                                >
-                                    {section.description}
-                                </ScrollFloat>
+                                    {/* Description NO LONGER has ScrollFloat */}
+                                    <p 
+                                        className="mb-8 w-full max-w-lg text-lg md:text-xl text-white/90 leading-relaxed"
+                                        style={{ fontFamily: "'NeueMontreal', sans-serif" }}
+                                    >
+                                        {section.description}
+                                    </p>
+                                </div>
 
-                                {/* Image with button overlay */}
-                                <div className="w-full max-w-5xl">
-                                    <div className="relative group">
-                                        {/* Glowing border effect */}
-                                        <div
-                                            className="absolute -inset-1 rounded-2xl opacity-70 blur-sm group-hover:opacity-100 transition-opacity duration-300"
-                                            style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%)' }}
+                                {/* Image Half */}
+                                <div className="w-full lg:w-1/2 relative group mt-8 lg:mt-0">
+                                    <div
+                                        className="absolute -inset-1 rounded-2xl opacity-70 blur-sm group-hover:opacity-100 transition-opacity duration-300"
+                                        style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%)' }}
+                                    />
+                                    <img
+                                        src={typeof section.img === 'string' ? section.img : section.img.src}
+                                        alt={section.heading}
+                                        className="relative w-full h-[350px] md:h-[450px] lg:h-[500px] xl:h-[600px] object-cover rounded-2xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
+                                        style={{ boxShadow: '0 25px 60px -12px rgba(0, 0, 0, 0.4)' }}
+                                    />
+
+                                    <div
+                                        className="absolute inset-0 rounded-2xl opacity-20"
+                                        style={{ background: 'linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.3) 100%)' }}
+                                    />
+
+                                    <div className="absolute -top-6 -right-6 md:-top-8 md:-right-8 z-10">
+                                        <CircularButton
+                                            text={section.buttonText}
+                                            href={section.link}
                                         />
-                                        <img
-                                            src={typeof section.img === 'string' ? section.img : section.img.src}
-                                            alt={section.heading}
-                                            className="relative w-full h-[300px] md:h-[400px] lg:h-[600px] object-cover rounded-2xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
-                                            style={{
-                                                boxShadow: '0 25px 60px -12px rgba(0, 0, 0, 0.4)',
-                                            }}
-                                        />
-
-                                        {/* Subtle overlay gradient */}
-                                        <div
-                                            className="absolute inset-0 rounded-2xl opacity-20"
-                                            style={{ background: 'linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.3) 100%)' }}
-                                        />
-
-                                        {/* Circular Button - positioned on top right of image */}
-                                        <div className="absolute -top-6 -right-6 md:-top-8 md:-right-8 z-10">
-                                            <CircularButton
-                                                text={section.buttonText}
-                                                href={section.link}
-                                            />
-                                        </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
