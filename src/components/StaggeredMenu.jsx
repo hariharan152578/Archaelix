@@ -334,7 +334,7 @@ const StaggeredMenu = ({
     <div
       className={`sm-scope z-40 top-0 left-0 w-full h-full  pointer-events-none fixed overflow-visible`}>
       <div
-        className={(className ? className + ' ' : '') + 'staggered-menu-wrapper relative w-full h-full overflow-visible'}
+        className={(className ? className + ' ' : '') + 'staggered-menu-wrapper  relative w-full h-full overflow-visible'}
         style={accentColor ? { ['--sm-accent']: accentColor } : undefined}
         data-position={position}
         data-open={open || undefined}>
@@ -354,11 +354,11 @@ const StaggeredMenu = ({
         </div>
 
     <header
-  className="staggered-menu-header fixed top-0 left-0 w-full flex items-center justify-between py-3 md:py-4 px-[4vw] md:px-8 bg-amber-800 pointer-events-none z-50 overflow-visible border-b border-black/[0.03]"
-  aria-label="Main navigation header"
+  className="staggered-menu-header fixed top-0 left-0 w-full flex items-center justify-between py-3 md:py-3 px-[4vw] md:px-8 pointer-events-none z-50 overflow-visible border-b"
+  aria-label="Main navigation header "
 >
   <div
-    className="sm-logo flex items-center select-none pointer-events-auto"
+    className="sm-logo  flex items-center select-none pointer-events-auto"
     aria-label="Logo"
   >
     {logoText ? (
@@ -449,7 +449,7 @@ const StaggeredMenu = ({
         <aside
           id="staggered-menu-panel"
           ref={panelRef}
-          className="staggered-menu-panel absolute top-0 right-0 h-full bg-white flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10 backdrop-blur-[12px] pointer-events-auto shadow-2xl"
+          className="staggered-menu-panel absolute top-0 right-0 h-full  flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10 backdrop-blur-[12px] pointer-events-auto shadow-2xl"
           aria-hidden={!open}>
           <div className="sm-panel-inner flex-1 flex flex-col gap-5 justify-center">
             <ul
@@ -577,9 +577,9 @@ const StaggeredMenu = ({
       <style>{`
 .sm-scope { overflow: visible !important; }
 .sm-scope .staggered-menu-wrapper { position: relative; width: 100%; height: 100%; z-index: 40; }
-.sm-scope .staggered-menu-header { position: absolute; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 5vw; background: transparent; pointer-events: none; z-index: 20; }
-@media (min-width: 768px) { .sm-scope .staggered-menu-header { padding: 2rem 3rem; } }
-@media (min-width: 1024px) { .sm-scope .staggered-menu-header { padding: 2rem 5rem; } }
+.sm-scope .staggered-menu-header { position: absolute; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 5vw; background: rgba(255,255,255,0.9);backdrop-filter: blur(90px) ; pointer-events: none; z-index: 20; }
+@media (min-width: 768px) { .sm-scope .staggered-menu-header { padding: 0.8rem 3rem; } }
+@media (min-width: 1024px) { .sm-scope .staggered-menu-header { padding: 0.8rem 5rem; } }
 .sm-scope .staggered-menu-header > * { pointer-events: auto; }
 .sm-scope .sm-logo { display: flex; align-items: center; user-select: none; }
 .sm-scope .sm-logo-img { display: block; height: 32px; width: auto; object-fit: contain; }
