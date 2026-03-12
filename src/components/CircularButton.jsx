@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -5,14 +6,23 @@ import Link from 'next/link';
 import './CircularButton.css';
 
 const CircularButton = ({ text = "EXPLORE MORE", href = "#", className = "" }) => {
-    // Split text into individual characters for the rotating animation
-    const characters = text.split('');
+    // We add a bullet point and space at the end so the circular text doesn't merge into itself
+    const paddedText = `${text} • `; 
+    const characters = paddedText.split('');
+    
+    // Dynamically calculate the perfect rotation degree per character
+    const degreePerChar = 360 / characters.length;
 
     return (
         <Link href={href} className={`circular-button ${className}`}>
             <p className="circular-button__text">
                 {characters.map((char, index) => (
-                    <span key={index} style={{ '--index': index }}>
+                    <span 
+                        key={index} 
+                        style={{ 
+                            transform: `rotate(${index * degreePerChar}deg)` 
+                        }}
+                    >
                         {char === ' ' ? '\u00A0' : char}
                     </span>
                 ))}
