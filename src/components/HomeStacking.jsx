@@ -1,3 +1,6 @@
+
+
+
 'use client';
 
 import React, { useEffect, useRef } from 'react';
@@ -19,7 +22,8 @@ const HomeStacking = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Section animations for the sticky stacking effect
+
+            // Section animations
             const createSectionAnim = (triggerSelector, prevTextSelector, nextTextSelector) => {
                 const tl = gsap.timeline({
                     scrollTrigger: {
@@ -31,10 +35,13 @@ const HomeStacking = () => {
                 });
 
                 tl.to(prevTextSelector, { opacity: 0, y: "30%" }, "s")
-                  .from(nextTextSelector, { opacity: 0, y: "-30%" }, "s");
+                    .from(nextTextSelector, { opacity: 0, y: "-30%" }, "s");
             };
 
+            // Section 2 Trigger
             createSectionAnim('.main-part-2', '.text-container-1', '.text-container-2');
+
+            // Section 3 Trigger
             createSectionAnim('.main-part-3', '.text-container-2', '.text-container-3');
 
         }, containerRef);
@@ -51,7 +58,6 @@ const HomeStacking = () => {
             bgColor: 'linear-gradient(135deg, #df1612 0%, #b7120e 100%)',
             mainClass: 'main-part-1',
             textClass: 'text-container-1',
-            buttonText: 'BUSINESS CONSULTATION',
             link: '/services/business-consulting',
         },
         {
@@ -62,7 +68,6 @@ const HomeStacking = () => {
             bgColor: 'linear-gradient(135deg, #b7120e 0%, #b52914 100%)',
             mainClass: 'main-part-2',
             textClass: 'text-container-2',
-            buttonText: 'IT SERVICES',
             link: '/services/it-services',
         },
         {
@@ -73,13 +78,13 @@ const HomeStacking = () => {
             bgColor: 'linear-gradient(135deg, #f2423e 0%, #df1612 50%, #b7120e 100%)',
             mainClass: 'main-part-3',
             textClass: 'text-container-3',
-            buttonText: 'DIGITAL MARKETING',
             link: '/services/digital-marketing',
         },
     ];
 
     return (
         <section ref={containerRef} className="w-full relative z-10 font-sans">
+
             <div className="relative z-10">
                 {sections.map((section, index) => (
                     <div
@@ -87,60 +92,56 @@ const HomeStacking = () => {
                         className={`${section.mainClass} min-h-screen flex items-center justify-center sticky top-0`}
                         style={{ background: section.bgColor }}
                     >
-                        <div className="container mx-auto px-6 py-16 md:py-20 w-full max-w-7xl">
+                        <div className="container mx-auto px-6 py-16 md:py-20 max-w-7xl">
                             
-                            <div className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center justify-between gap-12 lg:gap-16`}>
+                            {/* Alternating Flex Container */}
+                            <div className={`${section.textClass} flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center justify-between gap-12 lg:gap-20 w-full`}>
                                 
-                                {/* Text Half */}
-                                <div className={`${section.textClass} w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left`}>
-                                    
-                                    {/* Heading STILL HAS ScrollFloat */}
+                                {/* TEXT HALF */}
+                                <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+                                    { /* Big Heading - STILL HAS FLOAT EFFECT */}
                                     <ScrollFloat
                                         containerClassName="mb-6 lg:mb-8 w-full"
-                                        textClassName="text-5xl md:text-6xl lg:text-6xl xl:text-7xl text-white leading-[1.15] md:leading-[1.1] uppercase break-words"
-                                        style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600, letterSpacing: '0.02em' }}
+                                        textClassName="text-[10vw] md:text-[8vw] lg:text-[5vw] text-white leading-[1.1] uppercase break-words"
+                                        style={{ fontFamily: "'FoundersGrotesk', sans-serif", fontWeight: 600, letterSpacing: '0.05em' }}
                                         animationDuration={0.8}
                                         stagger={0.02}
-                                        scrollStart="top 95%"
+                                        scrollStart="top 90%"
                                         scrollEnd="bottom 10%"
                                     >
                                         {section.heading}
                                     </ScrollFloat>
 
-                                    {/* Description NO LONGER has ScrollFloat */}
+                                    { /* Small Paragraph - FLOAT EFFECT REMOVED */}
                                     <p 
-                                        className="mb-8 w-full max-w-lg text-lg md:text-xl text-white/90 leading-relaxed"
+                                        className="mb-8 w-full max-w-xl text-lg md:text-xl lg:text-2xl text-white/90 leading-relaxed"
                                         style={{ fontFamily: "'NeueMontreal', sans-serif" }}
                                     >
                                         {section.description}
                                     </p>
                                 </div>
 
-                                {/* Image Half */}
-                                <div className="w-full lg:w-1/2 relative group mt-8 lg:mt-0">
-                                    <div
-                                        className="absolute -inset-1 rounded-2xl opacity-70 blur-sm group-hover:opacity-100 transition-opacity duration-300"
-                                        style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%)' }}
-                                    />
-                                    <img
-                                        src={typeof section.img === 'string' ? section.img : section.img.src}
-                                        alt={section.heading}
-                                        className="relative w-full h-[350px] md:h-[450px] lg:h-[500px] xl:h-[600px] object-cover rounded-2xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
-                                        style={{ boxShadow: '0 25px 60px -12px rgba(0, 0, 0, 0.4)' }}
-                                    />
+                               {/* IMAGE HALF */}
+<div className="w-full lg:w-1/2 relative group mt-8 lg:mt-0">
+    
+    <img
+        src={typeof section.img === 'string' ? section.img : section.img.src}
+        alt={section.heading}
+        className="relative w-full h-[350px] md:h-[450px] lg:h-[550px] object-cover rounded-2xl shadow-2xl"
+    />
 
-                                    <div
-                                        className="absolute inset-0 rounded-2xl opacity-20"
-                                        style={{ background: 'linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.3) 100%)' }}
-                                    />
+   {/* Circular Button Wrapper */}
+<div className="absolute -top-6 -right-6 md:-top-8 md:-right-8 z-10 flex items-center justify-center">
+    
+    {/* THIS is the soft white blur effect behind the button */}
+    <div className="absolute inset-0 bg-white opacity-40 blur-2xl rounded-full scale-[2.5] pointer-events-none"></div>
 
-                                    <div className="absolute -top-6 -right-6 md:-top-8 md:-right-8 z-10">
-                                        <CircularButton
-                                            text={section.buttonText}
-                                            href={section.link}
-                                        />
-                                    </div>
-                                </div>
+    <CircularButton
+        text={section.heading.toUpperCase()}
+        href={section.link}
+    />
+</div>
+</div>
 
                             </div>
                         </div>
