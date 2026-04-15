@@ -26,7 +26,7 @@ const ClientSection = () => {
                 { label: "Digital Marketing", link: "/services/digital-marketing" },
             ]
         },
-        { label: "Client", link: "/client" },
+        { label: "Projects", link: "/projects" },
         { label: "Careers", link: "/careers" },
         { label: "Contact", link: "/contact" },
     ];
@@ -40,12 +40,19 @@ const ClientSection = () => {
             color: "#df1612"
         },
         {
-            name: "Elavarasi Foods",
-            tag: "Ongoing Brand Transformation",
-            shortDesc: "Comprehensive rebranding and digital evolution for a leading Kerala brand.",
-            fullDesc: "Elavarasi Foods is currently partnering with us for a comprehensive rebranding. Over several months, we have been engaged in brand redesign, e-commerce development, and strategic marketing. Our work involves in-depth research to determine optimal locations for new retail outlets and crafting targeted offline/online marketing strategies.",
-            color: "#0F172A"
-        },
+    name: "Flexa",
+    tag: "Personalized Nutrition & Wellness Food Innovation",
+    shortDesc: "Transforming healthy eating through customized diet meals and smart nutrition solutions.",
+    fullDesc: "Flexa is a health-focused food brand in India offering nutritious, personalized meals and diet-based products. Backed by Archaelix, it combines market research, strategic positioning, and scalable business modeling to build a wellness food ecosystem, delivering customized meal plans and a seamless digital experience to become a trusted leader in India’s health and wellness market.",
+    color: "#16A34A"
+},{
+    name: "Flavorz & Fablez",
+    tag: "Modern Culinary Essentials & Spice Innovation",
+    shortDesc: "Crafting authentic spice blends and premium cooking essentials for today’s kitchens.",
+    fullDesc: "Flavorz & Fablez is an emerging culinary brand in India offering premium spice blends, masalas, and seasonings to enhance everyday cooking. Supported by Archaelix, it focuses on strategic positioning, brand identity, product development, and digital commerce to deliver authentic taste, modern convenience, and strong culinary storytelling, aiming to become a trusted name in India’s growing spice market.",
+    color: "#B45309"
+}
+,
         {
             name: "LAP",
             tag: "Revolutionizing Technology",

@@ -22,7 +22,7 @@ const Intro = () => {
         { label: "Digital Marketing", link: "/services/digital-marketing" },
       ]
     },
-    {label:"Clients" ,link:"/clients"},
+    {label:"Projects" ,link:"/projects"},
     { label: "Careers", link: "/careers" },
     { label: "Contact", link: "/contact" },
   ];

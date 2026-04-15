@@ -69,7 +69,7 @@ export default function ITServicesPage() {
             ]
         },
            //  {label: "Ceo", link: "/ceo" },
-        {label:"Clients" ,link:"/clients"},
+        {label:"Projects" ,link:"/projects"},
         { label: "Careers", link: "/careers" },
         { label: "Contact", link: "/contact" },
     ];

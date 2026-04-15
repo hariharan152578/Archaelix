@@ -98,7 +98,7 @@ export default function AboutPage() {
             ]
         },
         //  {label: "Ceo", link: "/ceo" },
-        {label:"Clients" ,link:"/clients"},
+        {label:"Products" ,link:"/projects"},
         { label: "Careers", link: "/careers" },
         { label: "Contact", link: "/contact" },
     ];
