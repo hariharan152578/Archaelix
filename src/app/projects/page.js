@@ -68,7 +68,7 @@ const ClientSection = () => {
             color: "#0F172A"
         },
         {
-            name: "RM Construction",
+            name: "RM",
             tag: "Construction & Infrastructure",
             shortDesc: "End-to-end digital branding and website development for a modern construction company.",
             fullDesc: "For RM Construction, we delivered a complete digital transformation focused on building a strong and professional online presence. Our work included brand positioning, website design, and development tailored to showcase their construction expertise, project portfolio, and service offerings. We crafted a clean, structured, and performance-optimized website that reflects their commitment to quality, durability, and precision,It generate qualified client inquiries through a seamless and user-friendly experience.",
