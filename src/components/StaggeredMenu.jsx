@@ -362,7 +362,8 @@ const StaggeredMenu = ({
     aria-label="Logo"
   >
     {logoText ? (
-      <img
+      <img 
+        onClick={() => window.location.href = '/'}
         src={logoUrl.src || ''}
         alt="Logo"
         className="sm-logo-img block h-12 p-2 md:p-0 md:h-16 w-auto  scale-[5] md:scale-[7] object-contain"
