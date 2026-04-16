@@ -105,7 +105,7 @@ const Footer = () => {
     };
 
     return (
-        <footer ref={footerRef} className="w-full bg-[#df1612] text-white pt-20 pb-12 px-8 md:px-16 overflow-hidden">
+        <footer ref={footerRef} className="w-full bg-[#df1612] text-white pt-20 pb-20 md:pb-12 px-8 md:px-16 overflow-hidden">
             <div className="w-full flex flex-col gap-24">
                 
                 {/* TOP SECTION: Split Left and Right */}
@@ -181,7 +181,7 @@ const Footer = () => {
                 </div>
 
                 {/* MIDDLE SECTION: Big Animated Text */}
-                <div ref={bigTextRef} className="relative -mb-12 md:-mb-20 lg:-mb-32 flex justify-center">
+                <div ref={bigTextRef} className="relative -mb-1 md:-mb-20 lg:-mb-10 flex justify-center">
                     <h2 className="text-[23vw] font-bold leading-[0.75] font-heading uppercase select-none flex" style={{ perspective: "1000px" }}>
                         {brandName.split('').map((letter, index) => (
                             <span
@@ -199,11 +199,11 @@ const Footer = () => {
                 </div>
 
                 {/* BOTTOM SECTION: Copyright & Legal */}
-                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-widest uppercase font-sans text-white/30">
+                <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-widest uppercase font-sans text-white/60">
                     <p>© 2026 Archaelix. Digital Excellence.</p>
                     <div className="flex gap-10">
-                        <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-                        <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+                        <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+                        <Link href="/terms-and-conditions" className="hover:text-white transition-colors">Terms and Conditions</Link>
                     </div>
                 </div>
             </div>
