@@ -10,6 +10,9 @@ export const metadata = {
   ],
 },
 
+  verification: {
+    google: "googledf1c77099922178a",
+  },
 };
 
 // layout.js
